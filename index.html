@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Moora — важные слова без ссор и упрёков</title>
+<meta name="description" content="Moora знает язык любви обоих, превращает заметку в спокойное сообщение и подсказывает шаги партнёру. Отправляется только то, что вы одобрили." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap&subset=cyrillic" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+
+<header class="site-header" id="top">
+  <div class="container header__inner">
+    <a class="logo" href="#top" aria-label="Moora — на главную">
+      <svg class="logo__mark" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="16" fill="#C95A70"/>
+        <path d="M16 23c-.4 0-.8-.15-1.1-.43-2.6-2.35-6.9-6.05-6.9-9.62 0-2.3 1.82-4.1 4.05-4.1 1.28 0 2.48.6 3.25 1.55a4.27 4.27 0 0 1 3.25-1.55c2.23 0 4.05 1.8 4.05 4.1 0 3.57-4.3 7.27-6.9 9.62-.3.28-.7.43-1.1.43Z" fill="#F7F4EF"/>
+      </svg>
+      <span class="logo__text">Moora</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <a class="nav__link" href="#how">Как это работает</a>
+      <a class="nav__link" href="#onboarding">Онбординг</a>
+      <a class="nav__link" href="#gifts">Подарки</a>
+      <a class="nav__link" href="#languages">Языки любви</a>
+      <a class="nav__link" href="#pricing">Тарифы</a>
+      <a class="nav__link" href="#faq">Вопросы</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--ghost header__login" href="#">Войти</a>
+      <a class="btn btn--primary header__cta" href="#cta"><span class="label-full">Попробовать бесплатно</span><span class="label-short">Попробовать</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <span class="eyebrow">Бот для пар</span>
+        <h1 class="hero__title">Важные слова — без ссор и упрёков</h1>
+        <p class="hero__lead">
+          Moora знает язык любви обоих, превращает заметку в спокойное сообщение
+          и подсказывает партнёру конкретные шаги.
+          Отправляется только то, что вы одобрили.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--primary btn--lg" href="#cta">Попробовать бесплатно</a>
+          <a class="btn btn--secondary btn--lg" href="#how">Как это работает</a>
+        </div>
+        <p class="hero__note">Не терапия. Просто инструмент заботы.</p>
+      </div>
+
+      <div class="hero__visual">
+        <article class="device" aria-label="Пример работы Moora">
+          <header class="device__bar">
+            <span class="device__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="device__title">Moora · чат для двоих</span>
+            <span class="device__tag">Время вместе</span>
+          </header>
+
+          <div class="device__body">
+            <div class="pair-status">
+              <span class="chip chip--soft">Вместе 3 года</span>
+              <span class="chip chip--soft">Согласие ✓✓</span>
+              <span class="chip chip--soft">Тест пройден</span>
+            </div>
+
+            <div class="msg msg--note">
+              <span class="msg__label">Заметка · Соня</span>
+              <p>«Он опять весь вечер в телефоне. Я будто не важна ему.»</p>
+            </div>
+
+            <div class="msg msg--moora">
+              <span class="msg__label">Moora → Миша</span>
+              <p>«Миша, Соня соскучилась. Отложи телефон вечером и займитесь чем-то вдвоём.»</p>
+            </div>
+
+            <div class="wishes">
+              <span class="wishes__label">Хотелки-подарки</span>
+              <span class="wish">сертификат на спа</span>
+              <span class="wish">книга</span>
+              <span class="wish">свитер</span>
+              <button class="wish wish--add" type="button">+ добавить</button>
+            </div>
+
+            <div class="msg msg--step">
+              <span class="msg__label msg__label--light">Moora → Миша</span>
+              <p>Миша, Соне важно <strong>время вместе</strong>. Вот что можно сделать сегодня:</p>
+              <ol class="step-list">
+                <li>Отложи телефон на вечер</li>
+                <li>Приготовьте ужин вместе</li>
+                <li>Погуляйте или посмотрите фильм вдвоём</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--problem" id="problem">
+    <div class="container">
+      <div class="section__head">
+        <h2 class="section__title">Знакомо?</h2>
+        <p class="section__subtitle">Самые близкие люди получают самые неосторожные слова.</p>
+      </div>
+      <div class="grid grid--3">
+        <article class="card">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3a6 6 0 0 0-6 6c0 4-2 5-2 5h16s-2-1-2-5a6 6 0 0 0-6-6Zm0 18a3 3 0 0 0 3-3H9a3 3 0 0 0 3 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="card__title">Сказал(а) как есть</h3>
+          <p class="card__text">И получилась обида вместо просьбы. Хотел(а) как лучше — вышло как всегда.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/></svg>
+          </div>
+          <h3 class="card__title">Копишь раздражение</h3>
+          <p class="card__text">Чтобы не ссориться, молчишь. А напряжение всё равно растёт.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 5.65-7 10-7 10Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="card__title">Разные языки любви</h3>
+          <p class="card__text">Ты говоришь делами, партнёр ждёт слов. И оба чувствуют себя непонятыми.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--onboarding" id="onboarding">
+    <div class="container">
+      <div class="section__head">
+        <h2 class="section__title">Сначала знакомимся</h2>
+        <p class="section__subtitle">Прежде чем писать друг другу — короткий онбординг для обоих партнёров.</p>
+      </div>
+      <ol class="onb">
+        <li class="onb__item">
+          <span class="onb__num">01</span>
+          <h3 class="onb__title">Данные пары</h3>
+          <p class="onb__text">Имена, профили и то, как вы друг к другу обращаетесь.</p>
+        </li>
+        <li class="onb__item">
+          <span class="onb__num">02</span>
+          <h3 class="onb__title">Сколько вы вместе</h3>
+          <p class="onb__text">Контекст вашей истории — год, три или десять — и важные даты.</p>
+        </li>
+        <li class="onb__item">
+          <span class="onb__num">03</span>
+          <h3 class="onb__title">Согласие обоих</h3>
+          <p class="onb__text">Оба партнёра подтверждают участие. Без согласия чат не открывается.</p>
+        </li>
+        <li class="onb__item">
+          <span class="onb__num">04</span>
+          <h3 class="onb__title">Тест на язык любви</h3>
+          <p class="onb__text">Каждый проходит опрос и узнаёт свой язык любви.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--how" id="how">
+    <div class="container">
+      <div class="section__head">
+        <h2 class="section__title">Как это работает</h2>
+        <p class="section__subtitle">Четыре шага от «накипело» до спокойного сообщения и подсказки партнёру.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step__num">01</span>
+          <h3 class="step__title">Подключаете пару</h3>
+          <p class="step__text">Онбординг: данные, «сколько вместе», взаимное согласие и тест на язык любви.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">02</span>
+          <h3 class="step__title">Пишете заметки</h3>
+          <p class="step__text">Оба партнёра пишут как есть. Черновик видит только автор — никаких упрёков в лицо.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">03</span>
+          <h3 class="step__title">Moora перерабатывает</h3>
+          <p class="step__text">Убирает обвинения и подстраивает послание под язык любви того, кто его получит.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">04</span>
+          <h3 class="step__title">Шаги и одобрение</h3>
+          <p class="step__text">Партнёр видит ответ от третьего лица и конкретные шаги. Уходит только одобренное.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--dialogue" id="dialogue">
+    <div class="container dialogue__inner">
+      <div class="dialogue__content">
+        <span class="eyebrow">Чат для двоих</span>
+        <h2 class="section__title">Пишут оба — Moora перерабатывает для каждого</h2>
+        <p class="dialogue__lead">
+          Заметку оставляет любой из партнёров. Moora переработает её под язык любви
+          получателя и ответит ему от третьего лица — про тебя, а не от твоего имени.
+        </p>
+        <ul class="checklist">
+          <li class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <div>
+              <h3 class="checklist__title">Ответы от третьего лица</h3>
+              <p class="checklist__text">Moora пишет «Миша, Соне важно время вместе», а не от имени Сони.</p>
+            </div>
+          </li>
+          <li class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <div>
+              <h3 class="checklist__title">Вишлист подарков</h3>
+              <p class="checklist__text">Добавьте подарок чипом — он сохранится в боте и напомнит о важной дате.</p>
+            </div>
+          </li>
+          <li class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <div>
+              <h3 class="checklist__title">Двусторонний диалог</h3>
+              <p class="checklist__text">Каждый пишет и получает переработанное — без переписок «кто прав».</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dialogue__visual" aria-hidden="true">
+        <div class="thread">
+          <div class="msg msg--note">
+            <span class="msg__label">Заметка · Соня</span>
+            <p>«Он опять весь вечер в телефоне.»</p>
+          </div>
+          <div class="msg msg--moora">
+            <span class="msg__label">Moora → Миша</span>
+            <p>Миша, Соня просит внимания. Язык любви — <strong>время вместе</strong>. Отложи телефон и проведите вечер вдвоём.</p>
+          </div>
+          <div class="wishes">
+            <span class="wishes__label">Хотелки-подарки</span>
+            <span class="wish">сертификат на спа</span>
+            <span class="wish">свитер</span>
+            <button class="wish wish--add" type="button">+ добавить</button>
+          </div>
+          <div class="msg msg--note">
+            <span class="msg__label">Заметка · Миша</span>
+            <p>«Хочу больше времени вдвоём, а не только по выходным.»</p>
+          </div>
+          <div class="msg msg--moora">
+            <span class="msg__label">Moora → Соня</span>
+            <p>Соня, Миша ценит <strong>время вместе</strong>. 3 шага, что можно сделать на неделе.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--gifts" id="gifts">
+    <div class="container gifts__inner">
+      <div class="gifts__content">
+        <span class="eyebrow">Подарки</span>
+        <h2 class="section__title">Подарки к важной дате</h2>
+        <p class="gifts__lead">
+          Хотелки-подарки сохраняются в боте. Перед важной датой Moora сама напомнит
+          второй половине и предложит идеи.
+        </p>
+        <ul class="checklist">
+          <li class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <div>
+              <h3 class="checklist__title">Сохраняется в вишлисте</h3>
+              <p class="checklist__text">Добавьте подарок чипом в чате — он останется в боте до нужного момента.</p>
+            </div>
+          </li>
+          <li class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <div>
+              <h3 class="checklist__title">Напоминание заранее</h3>
+              <p class="checklist__text">Moora предупредит о годовщине, дне рождения или другой важной дате.</p>
+            </div>
+          </li>
+          <li class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <div>
+              <h3 class="checklist__title">Список от партнёра</h3>
+              <p class="checklist__text">В напоминании придёт готовый список того, что хотел партнёр.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="gifts__visual">
+        <div class="reminder" aria-label="Пример напоминания о подарке">
+          <span class="reminder__badge">Напоминание</span>
+          <h3 class="reminder__title">Скоро годовщина — 14 июня</h3>
+          <p class="reminder__text">Соня хотела:</p>
+          <div class="wishes">
+            <span class="wish">сертификат на спа</span>
+            <span class="wish">книга</span>
+            <span class="wish">свитер</span>
+          </div>
+          <p class="reminder__note">Миша, самое время выбрать подарок.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--languages" id="languages">
+    <div class="container">
+      <div class="section__head">
+        <h2 class="section__title">Moora знает язык любви обоих</h2>
+        <p class="section__subtitle">
+          Оба проходят тест на онбординге — и послание зазвучит так, как услышит именно ваш партнёр.
+        </p>
+      </div>
+      <div class="grid grid--5">
+        <article class="lang">
+          <div class="lang__icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-5 4V5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="lang__title">Слова поддержки</h3>
+        </article>
+        <article class="lang">
+          <div class="lang__icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.7"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="lang__title">Время вместе</h3>
+        </article>
+        <article class="lang">
+          <div class="lang__icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 10h16v9H4zM3 7h18v3H3zM12 7v12" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="lang__title">Подарки</h3>
+        </article>
+        <article class="lang">
+          <div class="lang__icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 5.65-7 10-7 10Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="lang__title">Помощь и дела</h3>
+        </article>
+        <article class="lang">
+          <div class="lang__icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M7 11V7a2 2 0 0 1 4 0v3m0-1a2 2 0 0 1 4 0v1m0 0a2 2 0 0 1 4 0v3a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6v-2a2 2 0 0 1 4 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="lang__title">Прикосновения</h3>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--privacy" id="privacy">
+    <div class="container privacy__inner">
+      <div class="privacy__content">
+        <span class="eyebrow">Контроль</span>
+        <h2 class="section__title">Отправляется только то, что вы одобрили</h2>
+        <ul class="checklist">
+          <li class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <div>
+              <h3 class="checklist__title">Взаимное согласие</h3>
+              <p class="checklist__text">Без подтверждения обоих партнёров чат не активируется.</p>
+            </div>
+          </li>
+          <li class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <div>
+              <h3 class="checklist__title">Черновик под замком</h3>
+              <p class="checklist__text">Твои заметки видишь только ты. Партнёр не узнает, что ты пишешь.</p>
+            </div>
+          </li>
+          <li class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <div>
+              <h3 class="checklist__title">Одобрение вручную</h3>
+              <p class="checklist__text">Ничего не уходит автоматически. Каждое сообщение — с твоего согласия.</p>
+            </div>
+          </li>
+          <li class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <div>
+              <h3 class="checklist__title">История под контролем</h3>
+              <p class="checklist__text">Отправленное можно перечитать и удалить в любой момент.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="privacy__visual" aria-hidden="true">
+        <div class="shield">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="shield__text">Только одобренное</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--reviews" id="reviews">
+    <div class="container">
+      <div class="section__head">
+        <h2 class="section__title">Пары уже говорят бережнее</h2>
+      </div>
+      <div class="grid grid--3">
+        <figure class="review">
+          <blockquote class="review__quote">«Впервые сказала о важном без слёз и ссоры. Он просто услышал.»</blockquote>
+          <figcaption class="review__author"><span class="review__avatar" aria-hidden="true">А</span> Аня и Дима</figcaption>
+        </figure>
+        <figure class="review">
+          <blockquote class="review__quote">«Перестали ругаться из-за мелочей. Оказалось, нам не хватало времени вдвоём.»</blockquote>
+          <figcaption class="review__author"><span class="review__avatar" aria-hidden="true">М</span> Марина и Илья</figcaption>
+        </figure>
+        <figure class="review">
+          <blockquote class="review__quote">«Тест показал её язык любви — и подсказки наконец сработали.»</blockquote>
+          <figcaption class="review__author"><span class="review__avatar" aria-hidden="true">К</span> Костя</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--pricing" id="pricing">
+    <div class="container">
+      <div class="section__head">
+        <h2 class="section__title">Простые тарифы</h2>
+        <p class="section__subtitle">Начните бесплатно. Платите, только если зайдёт.</p>
+      </div>
+      <div class="grid grid--3 pricing">
+        <article class="price-card">
+          <h3 class="price-card__name">Бесплатно</h3>
+          <p class="price-card__price">0 ₽<span>/всегда</span></p>
+          <ul class="price-card__list">
+            <li>5 сообщений в неделю</li>
+            <li>Тест на язык любви</li>
+            <li>Черновики под замком</li>
+            <li>Ручное одобрение</li>
+          </ul>
+          <a class="btn btn--secondary btn--block" href="#cta">Начать бесплатно</a>
+        </article>
+
+        <article class="price-card price-card--featured">
+          <span class="price-card__badge">Популярный</span>
+          <h3 class="price-card__name">Пара — месяц</h3>
+          <p class="price-card__price">390 ₽<span>/мес</span></p>
+          <ul class="price-card__list">
+            <li>Двусторонний чат</li>
+            <li>Языки любви обоих партнёров</li>
+            <li>Вишлист подарков к датам</li>
+            <li>История и напоминания</li>
+          </ul>
+          <a class="btn btn--primary btn--block" href="#cta">Попробовать</a>
+        </article>
+
+        <article class="price-card">
+          <h3 class="price-card__name">Пара — год</h3>
+          <p class="price-card__price">2 990 ₽<span>/год</span></p>
+          <ul class="price-card__list">
+            <li>Всё из месячного тарифа</li>
+            <li>Экономия 36%</li>
+            <li>Приоритетная поддержка</li>
+            <li>Ранний доступ к новому</li>
+          </ul>
+          <a class="btn btn--secondary btn--block" href="#cta">Выбрать год</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--faq" id="faq">
+    <div class="container container--narrow">
+      <div class="section__head">
+        <h2 class="section__title">Частые вопросы</h2>
+      </div>
+      <div class="faq">
+        <details class="faq__item" open>
+          <summary class="faq__q">Это терапия?</summary>
+          <p class="faq__a">Нет. Moora не лечит и не ставит диагнозов. Это инструмент заботы: помогает сказать важное спокойно и по-доброму.</p>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Зачем тест на язык любви?</summary>
+          <p class="faq__a">Оба партнёра проходят его на онбординге. Moora использует результат, чтобы послание и шаги зазвучали именно для этого человека.</p>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Что такое хотелки-подарки?</summary>
+          <p class="faq__a">Это материальные подарки, которые вы добавляете чипом прямо в чат. Они сохраняются в боте, а перед важной датой Moora напомнит второй половине и пришлёт список идей.</p>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Кто и что видит в чате?</summary>
+          <p class="faq__a">Черновики видит только автор. Партнёр получает переработанный вариант и подсказки — и только после вашего одобрения. Чат работает при согласии обоих.</p>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Насколько это безопасно?</summary>
+          <p class="faq__a">Данные не передаются третьим лицам, а историю можно удалить в любой момент. Ничего не отправляется автоматически.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cta" id="cta">
+    <div class="container">
+      <div class="cta-banner">
+        <h2 class="cta-banner__title">Скажите важное — бережно</h2>
+        <p class="cta-banner__text">Пройдите онбординг и начните с одной заметки. Отправьте, только если захотите.</p>
+        <a class="btn btn--light btn--lg" href="#">Попробовать бесплатно</a>
+        <p class="cta-banner__note">Не терапия. Просто инструмент заботы.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a class="logo logo--footer" href="#top" aria-label="Moora — на главную">
+        <svg class="logo__mark" width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="16" cy="16" r="16" fill="#C95A70"/>
+          <path d="M16 23c-.4 0-.8-.15-1.1-.43-2.6-2.35-6.9-6.05-6.9-9.62 0-2.3 1.82-4.1 4.05-4.1 1.28 0 2.48.6 3.25 1.55a4.27 4.27 0 0 1 3.25-1.55c2.23 0 4.05 1.8 4.05 4.1 0 3.57-4.3 7.27-6.9 9.62-.3.28-.7.43-1.1.43Z" fill="#F7F4EF"/>
+        </svg>
+        <span class="logo__text">Moora</span>
+      </a>
+      <p class="footer__note">Не терапия. Просто инструмент заботы.</p>
+    </div>
+    <nav class="footer__cols" aria-label="Footer">
+      <div class="footer__col">
+        <h3 class="footer__heading">Продукт</h3>
+        <a href="#how">Как это работает</a>
+        <a href="#onboarding">Онбординг</a>
+        <a href="#gifts">Подарки</a>
+        <a href="#languages">Языки любви</a>
+        <a href="#pricing">Тарифы</a>
+      </div>
+      <div class="footer__col">
+        <h3 class="footer__heading">Помощь</h3>
+        <a href="#faq">Вопросы</a>
+        <a href="#">Поддержка</a>
+        <a href="#">Приватность</a>
+      </div>
+      <div class="footer__col">
+        <h3 class="footer__heading">О проекте</h3>
+        <a href="#">О Moora</a>
+        <a href="#">Блог</a>
+        <a href="#">Контакты</a>
+      </div>
+    </nav>
+  </div>
+  <div class="container footer__bottom">
+    <span>© 2026 Moora. Все права защищены.</span>
+    <span>Сделано с заботой.</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var nav = document.getElementById('nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('is-open');
+        toggle.classList.toggle('is-active', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+      });
+      nav.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          nav.classList.remove('is-open');
+          toggle.classList.remove('is-active');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  })();
+</script>
+</body>
+</html>
