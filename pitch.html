@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Moora — презентация продукта</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --plum: #4A0E22;
+    --plum-2: #6A1730;
+    --plum-deep: #2E0814;
+    --cream: #FBF5EE;
+    --cream-dim: rgba(251, 245, 238, .62);
+    --line: rgba(251, 245, 238, .16);
+    --pink: #F7C6D4;
+    --rose: #E88BA8;
+    --violet: #B18CD9;
+    --gold: #E9C7A0;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font: 'Golos Text', system-ui, sans-serif;
+    --ease: cubic-bezier(.5, 0, 0, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { height: 100%; }
+
+  body {
+    background: #1E070E;
+    color: var(--cream);
+    font-family: var(--font);
+    overflow: hidden;
+  }
+
+  /* ============ СЛАЙДЫ ============ */
+  .deck { position: fixed; inset: 0; }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    padding: clamp(40px, 6vw, 92px) clamp(28px, 6vw, 96px) clamp(84px, 9vw, 120px);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    background: radial-gradient(120% 120% at 18% 12%, var(--plum-2), var(--plum) 52%, var(--plum-deep) 100%);
+    overflow: hidden;
+  }
+  .slide.is-active { display: flex; animation: slideIn .7s var(--ease) both; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .slide__tag {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 11px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--pink);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 14px;
+    margin-bottom: 22px;
+  }
+
+  .slide__title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 68px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -.01em;
+    max-width: 20ch;
+  }
+  .slide__title em { font-style: italic; color: var(--pink); }
+
+  .slide__lead { margin-top: 20px; font-size: clamp(15px, 1.4vw, 19px); color: var(--cream-dim); max-width: 60ch; line-height: 1.65; }
+
+  .slide__num {
+    position: absolute;
+    right: clamp(28px, 6vw, 96px);
+    bottom: clamp(28px, 5vw, 54px);
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: var(--cream-dim);
+    letter-spacing: .1em;
+  }
+  .slide__num b { color: var(--pink); font-weight: 600; }
+
+  .brand {
+    position: absolute;
+    left: clamp(28px, 6vw, 96px);
+    top: clamp(30px, 5vw, 56px);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 24px;
+  }
+  .brand svg { width: 26px; height: 26px; color: var(--pink); }
+
+  /* ============ ЭЛЕМЕНТЫ КОНТЕНТА ============ */
+  .cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(20px, 3vw, 46px); margin-top: 40px; }
+  .cols--3 { grid-template-columns: repeat(3, 1fr); }
+  .cols--4 { grid-template-columns: repeat(4, 1fr); }
+
+  .block { padding-top: 20px; border-top: 2px solid var(--pink); }
+  .block:nth-child(2) { border-top-color: var(--violet); }
+  .block:nth-child(3) { border-top-color: var(--gold); }
+  .block:nth-child(4) { border-top-color: var(--rose); }
+  .block__idx { font-family: var(--font-display); font-style: italic; font-size: 30px; color: var(--pink); line-height: 1; }
+  .block__title { font-family: var(--font-display); font-size: clamp(20px, 1.9vw, 28px); font-weight: 500; margin-top: 8px; }
+  .block__text { color: var(--cream-dim); font-size: clamp(13px, 1vw, 15px); margin-top: 8px; line-height: 1.6; }
+
+  .list { margin-top: 34px; display: flex; flex-direction: column; gap: 16px; max-width: 70ch; }
+  .list li { position: relative; padding-left: 30px; font-size: clamp(14px, 1.15vw, 17px); color: var(--cream); }
+  .list li::before { content: ""; position: absolute; left: 0; top: .62em; width: 14px; height: 2px; background: var(--pink); }
+  .list li b { color: var(--pink); font-weight: 600; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 3vw, 44px); margin-top: 46px; }
+  .stat { padding-top: 18px; border-top: 1px solid var(--line); }
+  .stat__val { font-family: var(--font-display); font-size: clamp(34px, 3.6vw, 58px); font-weight: 500; line-height: 1; color: var(--pink); }
+  .stat__label { margin-top: 10px; font-size: 13px; color: var(--cream-dim); }
+
+  .flow { display: flex; align-items: stretch; gap: clamp(12px, 1.6vw, 24px); margin-top: 44px; flex-wrap: wrap; }
+  .flow__step { flex: 1 1 200px; padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: rgba(251, 245, 238, .03); }
+  .flow__step span { font-family: var(--font-display); font-style: italic; font-size: 24px; color: var(--pink); }
+  .flow__step h4 { font-family: var(--font-display); font-size: 20px; font-weight: 500; margin-top: 6px; }
+  .flow__step p { color: var(--cream-dim); font-size: 13.5px; margin-top: 6px; line-height: 1.55; }
+
+  table.cmp { width: 100%; border-collapse: collapse; margin-top: 38px; font-size: clamp(12.5px, 1vw, 15px); }
+  table.cmp th, table.cmp td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  table.cmp th { font-family: var(--font-display); font-size: clamp(14px, 1.1vw, 17px); font-weight: 500; color: var(--cream); }
+  table.cmp td { color: var(--cream-dim); }
+  table.cmp tr td:first-child { color: var(--cream); }
+  table.cmp .yes { color: var(--pink); font-weight: 600; }
+  table.cmp .no { color: rgba(251, 245, 238, .35); }
+  table.cmp tr.highlight td { background: rgba(247, 198, 212, .08); color: var(--cream); }
+  table.cmp tr.highlight td:first-child { color: var(--pink); font-weight: 600; }
+
+  .road { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 30px); margin-top: 44px; }
+  .road__q { padding-top: 18px; border-top: 2px solid var(--violet); }
+  .road__q:nth-child(2) { border-top-color: var(--pink); }
+  .road__q:nth-child(3) { border-top-color: var(--gold); }
+  .road__q:nth-child(4) { border-top-color: var(--rose); }
+  .road__q b { font-family: var(--font-display); font-style: italic; font-size: 26px; color: var(--pink); }
+  .road__q p { color: var(--cream-dim); font-size: 14px; margin-top: 10px; line-height: 1.6; }
+
+  .prices { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 26px); margin-top: 44px; }
+  .price { padding: clamp(22px, 2.4vw, 34px); border: 1px solid var(--line); border-radius: 12px; }
+  .price--hot { border-color: var(--pink); background: rgba(247, 198, 212, .09); }
+  .price h4 { font-family: var(--font-display); font-size: 22px; font-weight: 500; }
+  .price .val { font-family: var(--font-display); font-size: clamp(30px, 3vw, 44px); margin-top: 8px; }
+  .price .val span { font-family: var(--font); font-size: 13px; color: var(--cream-dim); margin-left: 6px; }
+  .price p { color: var(--cream-dim); font-size: 13.5px; margin-top: 14px; line-height: 1.6; }
+
+  .ph { color: var(--gold); border-bottom: 1px dashed var(--gold); }  /* плейсхолдер */
+
+  /* ============ ФИНАЛ ============ */
+  .final { align-items: flex-start; }
+  .final__quote { font-family: var(--font-display); font-size: clamp(30px, 4.6vw, 64px); font-weight: 400; line-height: 1.14; max-width: 22ch; }
+  .final__quote em { font-style: italic; color: var(--pink); }
+  .final__contacts { margin-top: 40px; display: flex; gap: 30px; flex-wrap: wrap; color: var(--cream-dim); font-size: 15px; }
+  .final__contacts b { color: var(--cream); font-weight: 600; }
+
+  /* ============ НАВИГАЦИЯ ============ */
+  .nav {
+    position: fixed;
+    left: 50%;
+    bottom: clamp(20px, 3vw, 34px);
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 20;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(30, 7, 14, .7);
+    backdrop-filter: blur(12px);
+  }
+  .nav__btn {
+    width: 40px; height: 40px;
+    display: grid; place-items: center;
+    border: none;
+    border-radius: 50%;
+    background: rgba(251, 245, 238, .08);
+    color: var(--cream);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background .25s ease, color .25s ease;
+  }
+  .nav__btn:hover { background: var(--pink); color: var(--plum); }
+  .nav__count { font-size: 13px; color: var(--cream-dim); min-width: 56px; text-align: center; letter-spacing: .08em; }
+  .nav__count b { color: var(--pink); }
+
+  .progress { position: fixed; left: 0; bottom: 0; height: 3px; background: linear-gradient(90deg, var(--pink), var(--violet)); width: 0; z-index: 21; transition: width .5s var(--ease); }
+
+  .hint {
+    position: fixed;
+    right: clamp(20px, 3vw, 40px);
+    bottom: clamp(24px, 3.4vw, 40px);
+    font-size: 12px;
+    color: var(--cream-dim);
+    letter-spacing: .06em;
+    z-index: 20;
+  }
+  .hint kbd { border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; font-family: var(--font); color: var(--cream); }
+
+  /* ============ АДАПТИВ ============ */
+  @media (max-width: 900px) {
+    .slide { justify-content: flex-start; padding-top: clamp(90px, 14vw, 130px); overflow-y: auto; }
+    .cols, .cols--3, .cols--4, .stats, .road, .prices { grid-template-columns: 1fr; }
+    .flow__step { flex: 1 1 100%; }
+    .slide__title { max-width: none; }
+    table.cmp { font-size: 12px; }
+    table.cmp th, table.cmp td { padding: 10px 8px; }
+    .hint { display: none; }
+  }
+
+  /* ============ ПЕЧАТЬ ============ */
+  @media print {
+    body { overflow: visible; background: #fff; }
+    .nav, .progress, .hint { display: none !important; }
+    .deck { position: static; }
+    .slide { position: relative; display: flex !important; page-break-after: always; height: 100vh; animation: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide.is-active { animation: none; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Знак «два сердца» -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="heart" viewBox="0 0 24 24">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+    </symbol>
+  </defs>
+</svg>
+
+<div class="deck">
+
+  <!-- 1. ТИТУЛ -->
+  <section class="slide is-active">
+    <span class="brand">
+      <svg viewBox="0 0 72 72" fill="none" aria-hidden="true">
+        <use href="#heart" transform="translate(7 12) scale(1.7)" stroke="currentColor" stroke-width="2.6" />
+        <use href="#heart" transform="translate(28 28) scale(1.3)" stroke="#B18CD9" stroke-width="2.2" />
+      </svg>
+      Moora
+    </span>
+    <span class="slide__tag">Продукт для пар</span>
+    <h1 class="slide__title">Скажи важное — <em>бережно</em></h1>
+    <p class="slide__lead">
+      Moora знает язык любви обоих, превращает заметку в спокойное сообщение
+      и подсказывает партнёру конкретные шаги. Отправляется только то, что вы одобрили.
+    </p>
+    <p class="slide__lead" style="margin-top:14px;color:var(--pink)">Не терапия. Инструмент заботы.</p>
+    <span class="slide__num"><b>01</b> / 12</span>
+  </section>
+
+  <!-- 2. ПРОБЛЕМА -->
+  <section class="slide">
+    <span class="slide__tag">Проблема</span>
+    <h2 class="slide__title">Любовь есть — а слова выходят не те</h2>
+    <div class="cols cols--3">
+      <div class="block">
+        <span class="block__idx">01</span>
+        <h3 class="block__title">Упрёк вместо просьбы</h3>
+        <p class="block__text">«Опять весь вечер в телефоне» звучит вместо «мне тебя не хватает».</p>
+      </div>
+      <div class="block">
+        <span class="block__idx">02</span>
+        <h3 class="block__title">Между ссорой и терапией</h3>
+        <p class="block__text">Терапия — дорого и страшно, медиатора нет, книги не доходят.</p>
+      </div>
+      <div class="block">
+        <span class="block__idx">03</span>
+        <h3 class="block__title">Разные языки любви</h3>
+        <p class="block__text">Один говорит делами, второй ждёт слов — оба чувствуют себя непонятыми.</p>
+      </div>
+    </div>
+    <span class="slide__num"><b>02</b> / 12</span>
+  </section>
+
+  <!-- 3. РЕШЕНИЕ -->
+  <section class="slide">
+    <span class="slide__tag">Решение</span>
+    <h2 class="slide__title">Moora переводит обиду <em>в заботу</em></h2>
+    <ul class="list">
+      <li><b>Переработка.</b> Убирает обвинения и подстраивает послание под язык любви получателя.</li>
+      <li><b>От третьего лица.</b> Партнёру приходит «Соне важно время вместе», а не «я хочу».</li>
+      <li><b>Конкретные шаги.</b> Moora предлагает, что сделать сегодня — вдвоём.</li>
+      <li><b>Только одобренное.</b> Черновики не видит никто: отправка — по вашему согласию.</li>
+    </ul>
+    <span class="slide__num"><b>03</b> / 12</span>
+  </section>
+
+  <!-- 4. КАК ЭТО РАБОТАЕТ -->
+  <section class="slide">
+    <span class="slide__tag">Как это работает</span>
+    <h2 class="slide__title">Четыре шага от «накипело» до разговора</h2>
+    <div class="flow">
+      <div class="flow__step"><span>01</span><h4>Онбординг</h4><p>Данные, «сколько вместе», согласие обоих, тест на язык любви.</p></div>
+      <div class="flow__step"><span>02</span><h4>Заметки</h4><p>Оба пишут как есть. Черновик видит только автор.</p></div>
+      <div class="flow__step"><span>03</span><h4>Переработка</h4><p>Moora смягчает и говорит на языке партнёра.</p></div>
+      <div class="flow__step"><span>04</span><h4>Шаги и одобрение</h4><p>Партнёр получает подсказки. Уходит только одобренное.</p></div>
+    </div>
+    <span class="slide__num"><b>04</b> / 12</span>
+  </section>
+
+  <!-- 5. ПРОДУКТ -->
+  <section class="slide">
+    <span class="slide__tag">Продукт</span>
+    <h2 class="slide__title">Что умеет Moora</h2>
+    <div class="cols cols--4">
+      <div class="block"><span class="block__idx">01</span><h3 class="block__title">Чат для двоих</h3><p class="block__text">Пишут оба, Moora перерабатывает для каждого.</p></div>
+      <div class="block"><span class="block__idx">02</span><h3 class="block__title">Язык любви обоих</h3><p class="block__text">Послание звучит так, как услышит именно ваш партнёр.</p></div>
+      <div class="block"><span class="block__idx">03</span><h3 class="block__title">Хотелки-подарки</h3><p class="block__text">Вишлист сохраняется и напоминает о важной дате.</p></div>
+      <div class="block"><span class="block__idx">04</span><h3 class="block__title">Приватность</h3><p class="block__text">Взаимное согласие, ручное одобрение, история под контролем.</p></div>
+    </div>
+    <span class="slide__num"><b>05</b> / 12</span>
+  </section>
+
+  <!-- 6. ЯЗЫКИ ЛЮБВИ -->
+  <section class="slide">
+    <span class="slide__tag">Языки любви</span>
+    <h2 class="slide__title">Moora знает язык любви обоих</h2>
+    <div class="cols cols--5" style="grid-template-columns:repeat(5,1fr)">
+      <div class="block"><span class="block__idx">01</span><h3 class="block__title" style="font-size:20px">Слова поддержки</h3></div>
+      <div class="block"><span class="block__idx">02</span><h3 class="block__title" style="font-size:20px">Время вместе</h3></div>
+      <div class="block"><span class="block__idx">03</span><h3 class="block__title" style="font-size:20px">Подарки</h3></div>
+      <div class="block"><span class="block__idx">04</span><h3 class="block__title" style="font-size:20px">Помощь и дела</h3></div>
+      <div class="block"><span class="block__idx">05</span><h3 class="block__title" style="font-size:20px">Прикосновения</h3></div>
+    </div>
+    <span class="slide__num"><b>06</b> / 12</span>
+  </section>
+
+  <!-- 7. РЫНОК -->
+  <section class="slide">
+    <span class="slide__tag">Рынок · Россия / СНГ</span>
+    <h2 class="slide__title">Пары, которые хотят говорить иначе</h2>
+    <div class="stats">
+      <div class="stat"><div class="stat__val ph">[TAM]</div><div class="stat__label">Все пары и семьи 20–35 в РФ/СНГ</div></div>
+      <div class="stat"><div class="stat__val ph">[SAM]</div><div class="stat__label">Пары в устойчивых отношениях, смартфон-аудитория</div></div>
+      <div class="stat"><div class="stat__val ph">[SOM]</div><div class="stat__label">Доля, которую реально занять за 3 года</div></div>
+    </div>
+    <p class="slide__lead" style="margin-top:34px">Смежные рынки: психология отношений, дейтинг, семейные и wellness-приложения.</p>
+    <span class="slide__num"><b>07</b> / 12</span>
+  </section>
+
+  <!-- 8. БИЗНЕС-МОДЕЛЬ -->
+  <section class="slide">
+    <span class="slide__tag">Бизнес-модель</span>
+    <h2 class="slide__title">Freemium для пар</h2>
+    <div class="prices">
+      <div class="price">
+        <h4>Бесплатно</h4>
+        <div class="val">0 ₽<span>/всегда</span></div>
+        <p>5 сообщений в неделю, тест на язык любви, черновики под замком.</p>
+      </div>
+      <div class="price price--hot">
+        <h4>Пара — месяц</h4>
+        <div class="val">390 ₽<span>/мес</span></div>
+        <p>Двусторонний чат, языки любви обоих, вишлист подарков, история и напоминания.</p>
+      </div>
+      <div class="price">
+        <h4>Пара — год</h4>
+        <div class="val">2 990 ₽<span>/год</span></div>
+        <p>Всё из месячного, экономия 36%, приоритетная поддержка.</p>
+      </div>
+    </div>
+    <p class="slide__lead" style="margin-top:30px">Потенциал B2B: семейные центры, партнёрства по подаркам.</p>
+    <span class="slide__num"><b>08</b> / 12</span>
+  </section>
+
+  <!-- 9. GO-TO-MARKET -->
+  <section class="slide">
+    <span class="slide__tag">Go-to-market</span>
+    <h2 class="slide__title">Как растим аудиторию</h2>
+    <ul class="list">
+      <li><b>Reels-рост.</b> Инсценировки «до / после», «язык любви за 30 секунд».</li>
+      <li><b>Сообщества.</b> VK и Telegram: манифест, рубрики, отзывы пар.</li>
+      <li><b>Коллаборации.</b> Семейные и психологические аккаунты, взаимные охваты.</li>
+      <li><b>Реферальная механика.</b> «Пригласи партнёра» — вход только при согласии обоих.</li>
+    </ul>
+    <span class="slide__num"><b>09</b> / 12</span>
+  </section>
+
+  <!-- 10. КОНКУРЕНТЫ -->
+  <section class="slide">
+    <span class="slide__tag">Конкуренты</span>
+    <h2 class="slide__title">Чем Moora отличается</h2>
+    <table class="cmp">
+      <thead>
+        <tr><th>Подход</th><th>Язык любви</th><th>Двусторонний</th><th>Доступно</th><th>Деликатно</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Терапия и коучинг</td><td class="no">—</td><td class="no">—</td><td class="no">дорого</td><td class="yes">да</td></tr>
+        <tr><td>Медиаторы</td><td class="no">—</td><td class="yes">да</td><td class="no">—</td><td class="no">—</td></tr>
+        <tr><td>Дейтинг-приложения</td><td class="no">—</td><td class="yes">да</td><td class="yes">да</td><td class="no">—</td></tr>
+        <tr><td>Дневники</td><td class="no">—</td><td class="no">—</td><td class="yes">да</td><td class="yes">да</td></tr>
+        <tr class="highlight"><td>Moora</td><td class="yes">да</td><td class="yes">да</td><td class="yes">да</td><td class="yes">да</td></tr>
+      </tbody>
+    </table>
+    <span class="slide__num"><b>10</b> / 12</span>
+  </section>
+
+  <!-- 11. ROADMAP -->
+  <section class="slide">
+    <span class="slide__tag">Roadmap</span>
+    <h2 class="slide__title">Куда идём</h2>
+    <div class="road">
+      <div class="road__q"><b>Q1</b><p>Онбординг, тест языка любви, двусторонний чат.</p></div>
+      <div class="road__q"><b>Q2</b><p>Хотелки-подарки, напоминания о датах, история.</p></div>
+      <div class="road__q"><b>Q3</b><p>Монетизация, мобильные приложения, подсказки по тону.</p></div>
+      <div class="road__q"><b>Q4</b><p>Масштабирование, B2B, новые языки и рынки.</p></div>
+    </div>
+    <span class="slide__num"><b>11</b> / 12</span>
+  </section>
+
+  <!-- 12. ФИНАЛ -->
+  <section class="slide final">
+    <span class="slide__tag">Moora</span>
+    <h2 class="final__quote">Любовь — это не громкие слова.<br /> Любовь — это <em>бережно</em>.</h2>
+    <div class="final__contacts">
+      <span><b>[сайт]</b></span>
+      <span><b>[email]</b></span>
+      <span><b>[telegram]</b></span>
+      <span><b>[QR]</b></span>
+    </div>
+    <span class="slide__num"><b>12</b> / 12</span>
+  </section>
+
+</div>
+
+<nav class="nav" aria-label="Навигация по слайдам">
+  <button class="nav__btn" id="prev" aria-label="Назад">←</button>
+  <span class="nav__count"><b id="cur">1</b> / <span id="total">12</span></span>
+  <button class="nav__btn" id="next" aria-label="Дальше">→</button>
+</nav>
+
+<div class="progress" id="progress"></div>
+<p class="hint"><kbd>←</kbd> <kbd>→</kbd> или <kbd>пробел</kbd></p>
+
+<script>
+  (function () {
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var cur = document.getElementById('cur');
+    var total = document.getElementById('total');
+    var progress = document.getElementById('progress');
+    var i = 0;
+
+    total.textContent = slides.length;
+
+    function show(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+      cur.textContent = i + 1;
+      progress.style.width = ((i + 1) / slides.length * 100) + '%';
+    }
+
+    show(0);
+
+    document.getElementById('next').addEventListener('click', function () { show(i + 1); });
+    document.getElementById('prev').addEventListener('click', function () { show(i - 1); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); show(i + 1); }
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); show(i - 1); }
+      else if (e.key === 'Home') { e.preventDefault(); show(0); }
+      else if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+    });
+
+    var sx = null;
+    document.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+    document.addEventListener('touchend', function (e) {
+      if (sx === null) return;
+      var dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 50) show(dx < 0 ? i + 1 : i - 1);
+      sx = null;
+    }, { passive: true });
+  })();
+</script>
+</body>
+</html>
