@@ -189,6 +189,71 @@
 
   .ph { color: var(--gold); border-bottom: 2px dashed var(--gold); font-weight: 600; }
 
+  /* ============ ХУК ============ */
+  .hook { align-items: flex-start; }
+  .hook__quote { font-family: var(--font-display); font-size: clamp(34px, 6vw, 84px); font-weight: 500; line-height: 1.08; max-width: 24ch; }
+  .hook__quote em {
+    font-style: italic;
+    background: linear-gradient(100deg, var(--rose), var(--violet));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--rose);
+  }
+  .hook__note { margin-top: 28px; font-size: clamp(15px, 1.4vw, 19px); color: var(--ink-dim); max-width: 56ch; }
+
+  /* ============ ДЕМО (мокапы) ============ */
+  .demo { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.6vw, 40px); margin-top: 42px; align-items: start; }
+  .phone {
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    background: #FFFFFF;
+    box-shadow: 0 30px 70px -40px rgba(74, 14, 34, .55);
+    overflow: hidden;
+  }
+  .phone__bar { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--line); background: var(--paper-2); }
+  .phone__dots { display: inline-flex; gap: 4px; }
+  .phone__dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--rose); }
+  .phone__dots i:nth-child(2) { background: var(--violet); }
+  .phone__dots i:nth-child(3) { background: var(--gold); }
+  .phone__name { font-size: 11.5px; font-weight: 600; color: var(--ink); }
+  .phone__body { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .phone__cap { margin-top: 14px; text-align: center; font-size: 13px; color: var(--ink-dim); }
+
+  .pill { align-self: flex-start; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--rose); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; }
+  .pop { border: 1px solid var(--line); border-radius: 12px; padding: 11px 12px; }
+  .pop__who { display: block; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 5px; }
+  .pop p { font-size: 12.5px; line-height: 1.5; color: var(--ink); }
+  .pop--note { background: var(--paper-2); border-color: transparent; }
+  .pop--note p { font-style: italic; color: var(--ink-dim); }
+  .pop--moora { background: rgba(255, 126, 166, .14); border-color: transparent; border-radius: 12px 12px 12px 3px; align-self: flex-end; }
+  .pop--step { background: linear-gradient(150deg, #4A0E22, #6A1730); border-color: transparent; border-radius: 12px 12px 12px 3px; align-self: flex-end; }
+  .pop--step p { color: var(--paper); }
+  .pop--step .pop__who { color: rgba(251, 247, 241, .6); }
+  .pop__list { margin-top: 8px; display: flex; flex-direction: column; gap: 5px; counter-reset: d; }
+  .pop__list li { position: relative; padding-left: 20px; font-size: 11.5px; color: var(--paper); }
+  .pop__list li::before { counter-increment: d; content: counter(d); position: absolute; left: 0; top: 1px; width: 14px; height: 14px; border-radius: 50%; background: var(--rose); color: #fff; font-size: 9px; display: grid; place-items: center; }
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill-sm { font-size: 10.5px; color: var(--rose); background: rgba(255, 126, 166, .14); border-radius: 999px; padding: 4px 10px; }
+  .field { border: 1px solid var(--line); border-radius: 10px; padding: 9px 11px; font-size: 12px; color: var(--ink); display: flex; justify-content: space-between; align-items: center; }
+  .field span { color: var(--ink-dim); }
+  .rem-card { border: 1px solid var(--line); border-radius: 12px; padding: 12px; background: linear-gradient(160deg, #FFFFFF, rgba(255, 126, 166, .12)); }
+  .rem-card b { font-family: var(--font-display); font-size: 16px; display: block; margin-bottom: 8px; }
+
+  /* ============ ОТЗЫВЫ / ДОКАЗАТЕЛЬСТВА ============ */
+  .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.4vw, 34px); margin-top: 40px; }
+  .rev { padding-top: 18px; border-top: 3px solid var(--rose); }
+  .rev:nth-child(2) { border-top-color: var(--violet); }
+  .rev:nth-child(3) { border-top-color: var(--gold); }
+  .rev blockquote { font-family: var(--font-display); font-style: italic; font-size: clamp(17px, 1.6vw, 23px); line-height: 1.4; }
+  .rev figcaption { margin-top: 14px; font-size: 13px; color: var(--ink-dim); }
+  .proof { display: flex; gap: 34px; flex-wrap: wrap; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .proof__item b { font-family: var(--font-display); font-size: clamp(26px, 2.6vw, 40px); color: var(--rose); font-weight: 700; }
+  .proof__item span { display: block; margin-top: 4px; font-size: 13px; color: var(--ink-dim); }
+  .proof__item:nth-child(2) b { color: var(--violet); }
+  .proof__item:nth-child(3) b { color: var(--gold); }
+  .proof__item:nth-child(4) b { color: var(--mint); }
+
   /* ============ ФИНАЛ ============ */
   .final { align-items: flex-start; }
   .final__quote { font-family: var(--font-display); font-size: clamp(30px, 4.6vw, 64px); font-weight: 500; line-height: 1.14; max-width: 22ch; }
@@ -251,7 +316,7 @@
   /* ============ АДАПТИВ ============ */
   @media (max-width: 900px) {
     .slide { justify-content: flex-start; padding-top: clamp(90px, 14vw, 130px); overflow-y: auto; }
-    .cols, .cols--3, .cols--4, .stats, .road, .prices { grid-template-columns: 1fr; }
+    .cols, .cols--3, .cols--4, .stats, .road, .prices, .demo, .reviews { grid-template-columns: 1fr; }
     .flow__step { flex: 1 1 100%; }
     .slide__title { max-width: none; }
     table.cmp { font-size: 12px; }
@@ -302,10 +367,21 @@
       и подсказывает партнёру конкретные шаги. Отправляется только то, что вы одобрили.
     </p>
     <p class="slide__lead" style="margin-top:14px;color:var(--rose)">Не терапия. Инструмент заботы.</p>
-    <span class="slide__num"><b>01</b> / 12</span>
+    <span class="slide__num"><b>01</b> / 16</span>
   </section>
 
-  <!-- 2. ПРОБЛЕМА -->
+  <!-- 2. ХУК -->
+  <section class="slide hook">
+    <span class="slide__tag">Знакомо?</span>
+    <h2 class="hook__quote">«Опять весь вечер в телефоне».<br /> Как восемь слов <em>становятся ссорой</em>.</h2>
+    <p class="hook__note">
+      За этой фразой почти всегда стоит совсем другое: «мне тебя не хватает».
+      Проблема не в словах — в том, что важное не доходит.
+    </p>
+    <span class="slide__num"><b>02</b> / 16</span>
+  </section>
+
+  <!-- 3. ПРОБЛЕМА -->
   <section class="slide">
     <span class="slide__tag">Проблема</span>
     <h2 class="slide__title">Любовь есть — а слова выходят не те</h2>
@@ -326,10 +402,34 @@
         <p class="block__text">Один говорит делами, второй ждёт слов — оба чувствуют себя непонятыми.</p>
       </div>
     </div>
-    <span class="slide__num"><b>02</b> / 12</span>
+    <span class="slide__num"><b>03</b> / 16</span>
   </section>
 
-  <!-- 3. РЕШЕНИЕ -->
+  <!-- 4. АУДИТОРИЯ -->
+  <section class="slide">
+    <span class="slide__tag">Кому это нужно</span>
+    <h2 class="slide__title">Три пары — одна потребность</h2>
+    <div class="cols cols--3">
+      <div class="block">
+        <span class="block__idx">01</span>
+        <h3 class="block__title">«На грани»</h3>
+        <p class="block__text">Частые конфликты из-за мелочей. Ищут способ говорить, не разрушая.</p>
+      </div>
+      <div class="block">
+        <span class="block__idx">02</span>
+        <h3 class="block__title">«Хочется лучше»</h3>
+        <p class="block__text">Отношения в порядке, но есть усталость и рутина. Профилактика и язык любви.</p>
+      </div>
+      <div class="block">
+        <span class="block__idx">03</span>
+        <h3 class="block__title">«Молодые пары»</h3>
+        <p class="block__text">Только съехались, строят привычки общения с нуля.</p>
+      </div>
+    </div>
+    <span class="slide__num"><b>04</b> / 16</span>
+  </section>
+
+  <!-- 5. РЕШЕНИЕ -->
   <section class="slide">
     <span class="slide__tag">Решение</span>
     <h2 class="slide__title">Moora переводит обиду <em>в заботу</em></h2>
@@ -339,10 +439,10 @@
       <li><b>Конкретные шаги.</b> Moora предлагает, что сделать сегодня — вдвоём.</li>
       <li><b>Только одобренное.</b> Черновики не видит никто: отправка — по вашему согласию.</li>
     </ul>
-    <span class="slide__num"><b>03</b> / 12</span>
+    <span class="slide__num"><b>05</b> / 16</span>
   </section>
 
-  <!-- 4. КАК ЭТО РАБОТАЕТ -->
+  <!-- 6. КАК ЭТО РАБОТАЕТ -->
   <section class="slide">
     <span class="slide__tag">Как это работает</span>
     <h2 class="slide__title">Четыре шага от «накипело» до разговора</h2>
@@ -352,10 +452,57 @@
       <div class="flow__step"><span>03</span><h4>Переработка</h4><p>Moora смягчает и говорит на языке партнёра.</p></div>
       <div class="flow__step"><span>04</span><h4>Шаги и одобрение</h4><p>Партнёр получает подсказки. Уходит только одобренное.</p></div>
     </div>
-    <span class="slide__num"><b>04</b> / 12</span>
+    <span class="slide__num"><b>06</b> / 16</span>
   </section>
 
-  <!-- 5. ПРОДУКТ -->
+  <!-- 7. ДЕМО -->
+  <section class="slide">
+    <span class="slide__tag">Демо</span>
+    <h2 class="slide__title">Как это выглядит в приложении</h2>
+    <div class="demo">
+      <!-- экран 1: онбординг -->
+      <div class="phone">
+        <div class="phone__bar"><span class="phone__dots"><i></i><i></i><i></i></span><span class="phone__name">Онбординг</span></div>
+        <div class="phone__body">
+          <span class="pill">Пара</span>
+          <div class="field"><span>Вместе</span><b>3 года</b></div>
+          <div class="field"><span>Язык любви Сони</span><b>Время вместе</b></div>
+          <div class="field"><span>Язык любви Миши</span><b>Помощь и дела</b></div>
+          <div class="field"><span>Согласие обоих</span><b>✓✓</b></div>
+        </div>
+        <p class="phone__cap">Данные пары и тест на язык любви</p>
+      </div>
+
+      <!-- экран 2: чат -->
+      <div class="phone">
+        <div class="phone__bar"><span class="phone__dots"><i></i><i></i><i></i></span><span class="phone__name">Чат для двоих</span></div>
+        <div class="phone__body">
+          <div class="pop pop--note"><span class="pop__who">Заметка · Соня</span><p>«Он опять весь вечер в телефоне.»</p></div>
+          <div class="pop pop--moora"><span class="pop__who">Moora → Миша</span><p>Миша, Соня просит внимания. Язык любви — <b>время вместе</b>.</p></div>
+          <div class="pop pop--step"><span class="pop__who">Moora → Миша</span><p>Что можно сделать сегодня:</p>
+            <ol class="pop__list"><li>Отложи телефон на вечер</li><li>Приготовьте ужин вместе</li><li>Погуляйте вдвоём</li></ol>
+          </div>
+        </div>
+        <p class="phone__cap">Ответ от третьего лица + шаги</p>
+      </div>
+
+      <!-- экран 3: подарки -->
+      <div class="phone">
+        <div class="phone__bar"><span class="phone__dots"><i></i><i></i><i></i></span><span class="phone__name">Подарки</span></div>
+        <div class="phone__body">
+          <span class="pill">Напоминание</span>
+          <div class="rem-card"><b>Скоро годовщина — 14 июня</b>
+            <div class="pills"><span class="pill-sm">сертификат на спа</span><span class="pill-sm">книга</span><span class="pill-sm">свитер</span></div>
+          </div>
+          <div class="pop pop--moora"><span class="pop__who">Moora → Миша</span><p>Соня хотела это — самое время выбрать подарок.</p></div>
+        </div>
+        <p class="phone__cap">Вишлист и напоминание о дате</p>
+      </div>
+    </div>
+    <span class="slide__num"><b>07</b> / 16</span>
+  </section>
+
+  <!-- 8. ПРОДУКТ -->
   <section class="slide">
     <span class="slide__tag">Продукт</span>
     <h2 class="slide__title">Что умеет Moora</h2>
@@ -365,10 +512,10 @@
       <div class="block"><span class="block__idx">03</span><h3 class="block__title">Хотелки-подарки</h3><p class="block__text">Вишлист сохраняется и напоминает о важной дате.</p></div>
       <div class="block"><span class="block__idx">04</span><h3 class="block__title">Приватность</h3><p class="block__text">Взаимное согласие, ручное одобрение, история под контролем.</p></div>
     </div>
-    <span class="slide__num"><b>05</b> / 12</span>
+    <span class="slide__num"><b>08</b> / 16</span>
   </section>
 
-  <!-- 6. ЯЗЫКИ ЛЮБВИ -->
+  <!-- 9. ЯЗЫКИ ЛЮБВИ -->
   <section class="slide">
     <span class="slide__tag">Языки любви</span>
     <h2 class="slide__title">Moora знает язык любви обоих</h2>
@@ -379,10 +526,10 @@
       <div class="block"><span class="block__idx">04</span><h3 class="block__title" style="font-size:20px">Помощь и дела</h3></div>
       <div class="block"><span class="block__idx">05</span><h3 class="block__title" style="font-size:20px">Прикосновения</h3></div>
     </div>
-    <span class="slide__num"><b>06</b> / 12</span>
+    <span class="slide__num"><b>09</b> / 16</span>
   </section>
 
-  <!-- 7. РЫНОК -->
+  <!-- 10. РЫНОК -->
   <section class="slide">
     <span class="slide__tag">Рынок · Россия / СНГ</span>
     <h2 class="slide__title">Пары, которые хотят говорить иначе</h2>
@@ -392,10 +539,10 @@
       <div class="stat"><div class="stat__val ph">[SOM]</div><div class="stat__label">Доля, которую реально занять за 3 года</div></div>
     </div>
     <p class="slide__lead" style="margin-top:34px">Смежные рынки: психология отношений, дейтинг, семейные и wellness-приложения.</p>
-    <span class="slide__num"><b>07</b> / 12</span>
+    <span class="slide__num"><b>10</b> / 16</span>
   </section>
 
-  <!-- 8. БИЗНЕС-МОДЕЛЬ -->
+  <!-- 11. БИЗНЕС-МОДЕЛЬ -->
   <section class="slide">
     <span class="slide__tag">Бизнес-модель</span>
     <h2 class="slide__title">Freemium для пар</h2>
@@ -417,10 +564,10 @@
       </div>
     </div>
     <p class="slide__lead" style="margin-top:30px">Потенциал B2B: семейные центры, партнёрства по подаркам.</p>
-    <span class="slide__num"><b>08</b> / 12</span>
+    <span class="slide__num"><b>11</b> / 16</span>
   </section>
 
-  <!-- 9. GO-TO-MARKET -->
+  <!-- 12. GO-TO-MARKET -->
   <section class="slide">
     <span class="slide__tag">Go-to-market</span>
     <h2 class="slide__title">Как растим аудиторию</h2>
@@ -430,10 +577,10 @@
       <li><b>Коллаборации.</b> С семейными и психологическими аккаунтами, взаимные охваты.</li>
       <li><b>Реферальная механика.</b> «Пригласи партнёра» — вход только при согласии обоих.</li>
     </ul>
-    <span class="slide__num"><b>09</b> / 12</span>
+    <span class="slide__num"><b>12</b> / 16</span>
   </section>
 
-  <!-- 10. КОНКУРЕНТЫ -->
+  <!-- 13. КОНКУРЕНТЫ -->
   <section class="slide">
     <span class="slide__tag">Конкуренты</span>
     <h2 class="slide__title">Чем Moora отличается</h2>
@@ -449,10 +596,37 @@
         <tr class="highlight"><td>Moora</td><td class="yes">да</td><td class="yes">да</td><td class="yes">да</td><td class="yes">да</td></tr>
       </tbody>
     </table>
-    <span class="slide__num"><b>10</b> / 12</span>
+    <span class="slide__num"><b>13</b> / 16</span>
   </section>
 
-  <!-- 11. ROADMAP -->
+  <!-- 14. ДОКАЗАТЕЛЬСТВА -->
+  <section class="slide">
+    <span class="slide__tag">Доказательства</span>
+    <h2 class="slide__title">Пары уже говорят бережнее</h2>
+    <div class="reviews">
+      <figure class="rev">
+        <blockquote>«Впервые сказала о важном без слёз и ссоры. Он просто услышал.»</blockquote>
+        <figcaption>Аня и Дима</figcaption>
+      </figure>
+      <figure class="rev">
+        <blockquote>«Перестали ругаться из-за мелочей. Нам не хватало времени вдвоём.»</blockquote>
+        <figcaption>Марина и Илья</figcaption>
+      </figure>
+      <figure class="rev">
+        <blockquote>«Тест показал её язык любви — и подсказки наконец сработали.»</blockquote>
+        <figcaption>Костя</figcaption>
+      </figure>
+    </div>
+    <div class="proof">
+      <div class="proof__item"><b class="ph">[N]</b><span>в waitlist</span></div>
+      <div class="proof__item"><b class="ph">[N]</b><span>бета-тестеров</span></div>
+      <div class="proof__item"><b class="ph">[X]/5</b><span>средняя оценка</span></div>
+      <div class="proof__item"><b class="ph">[N]%</b><span>отметили улучшение</span></div>
+    </div>
+    <span class="slide__num"><b>14</b> / 16</span>
+  </section>
+
+  <!-- 15. ROADMAP -->
   <section class="slide">
     <span class="slide__tag">Roadmap</span>
     <h2 class="slide__title">Куда идём</h2>
@@ -462,10 +636,10 @@
       <div class="road__q"><b>Q3</b><p>Монетизация, мобильные приложения, подсказки по тону.</p></div>
       <div class="road__q"><b>Q4</b><p>Масштабирование, B2B, новые языки и рынки.</p></div>
     </div>
-    <span class="slide__num"><b>11</b> / 12</span>
+    <span class="slide__num"><b>15</b> / 16</span>
   </section>
 
-  <!-- 12. ФИНАЛ -->
+  <!-- 16. ФИНАЛ -->
   <section class="slide final">
     <span class="slide__tag">Moora</span>
     <h2 class="final__quote">Любовь — это не громкие слова.<br /> Любовь — это <em>бережно</em>.</h2>
@@ -475,14 +649,14 @@
       <span><b>[telegram]</b></span>
       <span><b>[QR]</b></span>
     </div>
-    <span class="slide__num"><b>12</b> / 12</span>
+    <span class="slide__num"><b>16</b> / 16</span>
   </section>
 
 </div>
 
 <nav class="nav" aria-label="Навигация по слайдам">
   <button class="nav__btn" id="prev" aria-label="Назад">←</button>
-  <span class="nav__count"><b id="cur">1</b> / <span id="total">12</span></span>
+  <span class="nav__count"><b id="cur">1</b> / <span id="total">16</span></span>
   <button class="nav__btn" id="next" aria-label="Дальше">→</button>
 </nav>
 
