@@ -179,6 +179,19 @@
   .road__q b { font-family: var(--font-display); font-style: italic; font-size: 26px; color: var(--rose); }
   .road__q p { color: var(--ink-dim); font-size: 14px; margin-top: 10px; line-height: 1.6; }
 
+  .invest { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 1.8vw, 26px); margin-top: 44px; }
+  .invest__stage { position: relative; padding: clamp(20px, 2.2vw, 30px) clamp(18px, 2vw, 26px); border: 1px solid var(--line); border-radius: 14px; background: #FFFFFF; display: flex; flex-direction: column; }
+  .invest__stage::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; border-radius: 14px 14px 0 0; background: var(--violet); }
+  .invest__stage:nth-child(1)::before { background: var(--violet); }
+  .invest__stage:nth-child(2)::before { background: var(--rose); }
+  .invest__stage:nth-child(3)::before { background: var(--gold); }
+  .invest__stage:nth-child(4)::before { background: var(--mint); }
+  .invest__q { font-family: var(--font-display); font-style: italic; font-size: 20px; color: var(--rose); }
+  .invest__title { font-family: var(--font-display); font-size: clamp(20px, 1.8vw, 26px); font-weight: 600; margin-top: 4px; }
+  .invest__desc { color: var(--ink-dim); font-size: 13.5px; margin-top: 12px; line-height: 1.6; }
+  .invest__exit { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--ink-dim); line-height: 1.5; }
+  .invest__exit b { color: var(--ink); font-weight: 600; }
+
   .prices { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 26px); margin-top: 44px; }
   .price { padding: clamp(22px, 2.4vw, 34px); border: 1px solid var(--line); border-radius: 14px; background: #FFFFFF; }
   .price--hot { border-color: var(--rose); background: linear-gradient(160deg, #FFFFFF, rgba(255, 126, 166, .14)); box-shadow: 0 20px 50px -30px rgba(240, 71, 122, .7); }
@@ -316,7 +329,7 @@
   /* ============ АДАПТИВ ============ */
   @media (max-width: 900px) {
     .slide { justify-content: flex-start; padding-top: clamp(90px, 14vw, 130px); overflow-y: auto; }
-    .cols, .cols--3, .cols--4, .stats, .road, .prices, .demo, .reviews { grid-template-columns: 1fr; }
+    .cols, .cols--3, .cols--4, .stats, .road, .invest, .prices, .demo, .reviews { grid-template-columns: 1fr; }
     .flow__step { flex: 1 1 100%; }
     .slide__title { max-width: none; }
     table.cmp { font-size: 12px; }
@@ -367,7 +380,7 @@
       и подсказывает партнёру конкретные шаги. Отправляется только то, что вы одобрили.
     </p>
     <p class="slide__lead" style="margin-top:14px;color:var(--rose)">Не терапия. Инструмент заботы.</p>
-    <span class="slide__num"><b>01</b> / 16</span>
+    <span class="slide__num"><b>01</b> / 17</span>
   </section>
 
   <!-- 2. ХУК -->
@@ -378,7 +391,7 @@
       За этой фразой почти всегда стоит совсем другое: «мне тебя не хватает».
       Проблема не в словах — в том, что важное не доходит.
     </p>
-    <span class="slide__num"><b>02</b> / 16</span>
+    <span class="slide__num"><b>02</b> / 17</span>
   </section>
 
   <!-- 3. ПРОБЛЕМА -->
@@ -402,7 +415,7 @@
         <p class="block__text">Один говорит делами, второй ждёт слов — оба чувствуют себя непонятыми.</p>
       </div>
     </div>
-    <span class="slide__num"><b>03</b> / 16</span>
+    <span class="slide__num"><b>03</b> / 17</span>
   </section>
 
   <!-- 4. АУДИТОРИЯ -->
@@ -426,7 +439,7 @@
         <p class="block__text">Только съехались, строят привычки общения с нуля.</p>
       </div>
     </div>
-    <span class="slide__num"><b>04</b> / 16</span>
+    <span class="slide__num"><b>04</b> / 17</span>
   </section>
 
   <!-- 5. РЕШЕНИЕ -->
@@ -439,7 +452,7 @@
       <li><b>Конкретные шаги.</b> Moora предлагает, что сделать сегодня — вдвоём.</li>
       <li><b>Только одобренное.</b> Черновики не видит никто: отправка — по вашему согласию.</li>
     </ul>
-    <span class="slide__num"><b>05</b> / 16</span>
+    <span class="slide__num"><b>05</b> / 17</span>
   </section>
 
   <!-- 6. КАК ЭТО РАБОТАЕТ -->
@@ -452,7 +465,7 @@
       <div class="flow__step"><span>03</span><h4>Переработка</h4><p>Moora смягчает и говорит на языке партнёра.</p></div>
       <div class="flow__step"><span>04</span><h4>Шаги и одобрение</h4><p>Партнёр получает подсказки. Уходит только одобренное.</p></div>
     </div>
-    <span class="slide__num"><b>06</b> / 16</span>
+    <span class="slide__num"><b>06</b> / 17</span>
   </section>
 
   <!-- 7. ДЕМО -->
@@ -499,7 +512,7 @@
         <p class="phone__cap">Вишлист и напоминание о дате</p>
       </div>
     </div>
-    <span class="slide__num"><b>07</b> / 16</span>
+    <span class="slide__num"><b>07</b> / 17</span>
   </section>
 
   <!-- 8. ПРОДУКТ -->
@@ -512,7 +525,7 @@
       <div class="block"><span class="block__idx">03</span><h3 class="block__title">Хотелки-подарки</h3><p class="block__text">Вишлист сохраняется и напоминает о важной дате.</p></div>
       <div class="block"><span class="block__idx">04</span><h3 class="block__title">Приватность</h3><p class="block__text">Взаимное согласие, ручное одобрение, история под контролем.</p></div>
     </div>
-    <span class="slide__num"><b>08</b> / 16</span>
+    <span class="slide__num"><b>08</b> / 17</span>
   </section>
 
   <!-- 9. ЯЗЫКИ ЛЮБВИ -->
@@ -526,7 +539,7 @@
       <div class="block"><span class="block__idx">04</span><h3 class="block__title" style="font-size:20px">Помощь и дела</h3></div>
       <div class="block"><span class="block__idx">05</span><h3 class="block__title" style="font-size:20px">Прикосновения</h3></div>
     </div>
-    <span class="slide__num"><b>09</b> / 16</span>
+    <span class="slide__num"><b>09</b> / 17</span>
   </section>
 
   <!-- 10. РЫНОК -->
@@ -539,32 +552,32 @@
       <div class="stat"><div class="stat__val ph">[SOM]</div><div class="stat__label">Доля, которую реально занять за 3 года</div></div>
     </div>
     <p class="slide__lead" style="margin-top:34px">Смежные рынки: психология отношений, дейтинг, семейные и wellness-приложения.</p>
-    <span class="slide__num"><b>10</b> / 16</span>
+    <span class="slide__num"><b>10</b> / 17</span>
   </section>
 
   <!-- 11. БИЗНЕС-МОДЕЛЬ -->
   <section class="slide">
     <span class="slide__tag">Бизнес-модель</span>
-    <h2 class="slide__title">Freemium для пар</h2>
+    <h2 class="slide__title">Сейчас — бесплатно</h2>
     <div class="prices">
-      <div class="price">
-        <h4>Бесплатно</h4>
-        <div class="val">0 ₽<span>/всегда</span></div>
-        <p>5 сообщений в неделю, тест на язык любви, черновики под замком.</p>
-      </div>
       <div class="price price--hot">
-        <h4>Пара — месяц</h4>
-        <div class="val">390 ₽<span>/мес</span></div>
-        <p>Двусторонний чат, языки любви обоих, вишлист подарков, история и напоминания.</p>
+        <h4>Moora</h4>
+        <div class="val">0 ₽<span>/всегда</span></div>
+        <p>Двусторонний чат, языки любви обоих, вишлист подарков, история и напоминания — всё открыто.</p>
       </div>
       <div class="price">
-        <h4>Пара — год</h4>
-        <div class="val">2 990 ₽<span>/год</span></div>
-        <p>Всё из месячного, экономия 36%, приоритетная поддержка.</p>
+        <h4>Задача этапа</h4>
+        <div class="val">PMF<span>/retention</span></div>
+        <p>Сначала — чтобы парами пользовались и оставались. Монетизацию вводим после подтверждённой ценности.</p>
+      </div>
+      <div class="price">
+        <h4>Потенциал</h4>
+        <div class="val">B2B<span>/партнёрства</span></div>
+        <p>Семейные центры, партнёрства по подаркам, подписочные модели — на этапе масштаба.</p>
       </div>
     </div>
-    <p class="slide__lead" style="margin-top:30px">Потенциал B2B: семейные центры, партнёрства по подаркам.</p>
-    <span class="slide__num"><b>11</b> / 16</span>
+    <p class="slide__lead" style="margin-top:30px">На старте фокус — на пользе и привычке, а не на выручке.</p>
+    <span class="slide__num"><b>11</b> / 17</span>
   </section>
 
   <!-- 12. GO-TO-MARKET -->
@@ -577,7 +590,7 @@
       <li><b>Коллаборации.</b> С семейными и психологическими аккаунтами, взаимные охваты.</li>
       <li><b>Реферальная механика.</b> «Пригласи партнёра» — вход только при согласии обоих.</li>
     </ul>
-    <span class="slide__num"><b>12</b> / 16</span>
+    <span class="slide__num"><b>12</b> / 17</span>
   </section>
 
   <!-- 13. КОНКУРЕНТЫ -->
@@ -596,7 +609,7 @@
         <tr class="highlight"><td>Moora</td><td class="yes">да</td><td class="yes">да</td><td class="yes">да</td><td class="yes">да</td></tr>
       </tbody>
     </table>
-    <span class="slide__num"><b>13</b> / 16</span>
+    <span class="slide__num"><b>13</b> / 17</span>
   </section>
 
   <!-- 14. ДОКАЗАТЕЛЬСТВА -->
@@ -623,40 +636,78 @@
       <div class="proof__item"><b class="ph">[X]/5</b><span>средняя оценка</span></div>
       <div class="proof__item"><b class="ph">[N]%</b><span>отметили улучшение</span></div>
     </div>
-    <span class="slide__num"><b>14</b> / 16</span>
+    <span class="slide__num"><b>14</b> / 17</span>
   </section>
 
-  <!-- 15. ROADMAP -->
+  <!-- 15. ROADMAP (ИНВЕСТОРСКИЙ) -->
   <section class="slide">
-    <span class="slide__tag">Roadmap</span>
-    <h2 class="slide__title">Куда идём</h2>
-    <div class="road">
-      <div class="road__q"><b>Q1</b><p>Онбординг, тест языка любви, двусторонний чат.</p></div>
-      <div class="road__q"><b>Q2</b><p>Хотелки-подарки, напоминания о датах, история.</p></div>
-      <div class="road__q"><b>Q3</b><p>Монетизация, мобильные приложения, подсказки по тону.</p></div>
-      <div class="road__q"><b>Q4</b><p>Масштабирование, B2B, новые языки и рынки.</p></div>
+    <span class="slide__tag">Roadmap · путь к масштабу</span>
+    <h2 class="slide__title">Вехи, а не задачи</h2>
+    <div class="invest">
+      <div class="invest__stage">
+        <span class="invest__q">Q1</span>
+        <h3 class="invest__title">MVP</h3>
+        <p class="invest__desc">Ядро: онбординг пары, тест языка любви, двусторонний чат.</p>
+        <p class="invest__exit"><b>Выход:</b> 50 пар, активация 40%</p>
+      </div>
+      <div class="invest__stage">
+        <span class="invest__q">Q2</span>
+        <h3 class="invest__title">Beta · PMF</h3>
+        <p class="invest__desc">Вишлист, напоминания, история. Ищем продуктовое соответствие.</p>
+        <p class="invest__exit"><b>Выход:</b> retention D30 ≥ 25%, 20 отзывов</p>
+      </div>
+      <div class="invest__stage">
+        <span class="invest__q">Q3</span>
+        <h3 class="invest__title">Launch · Монетизация</h3>
+        <p class="invest__desc">Публичный запуск, платные тарифы, мобильные приложения.</p>
+        <p class="invest__exit"><b>Выход:</b> первые платящие, 500 пар</p>
+      </div>
+      <div class="invest__stage">
+        <span class="invest__q">Q4</span>
+        <h3 class="invest__title">Scale</h3>
+        <p class="invest__desc">Рост, B2B, новые языки и рынки.</p>
+        <p class="invest__exit"><b>Выход:</b> LTV/CAC &gt; 3, 3 000 пар</p>
+      </div>
     </div>
-    <span class="slide__num"><b>15</b> / 16</span>
+    <p class="slide__lead" style="margin-top:30px">Каждая веха — «ворота»: не выполнили критерий выхода — не идём дальше.</p>
+    <span class="slide__num"><b>15</b> / 17</span>
   </section>
 
-  <!-- 16. ФИНАЛ -->
+  <!-- 16. ROADMAP — ПЕРВЫЕ 2 НЕДЕЛИ -->
+  <section class="slide">
+    <span class="slide__tag">Roadmap · первые 2 недели</span>
+    <h2 class="slide__title">Что делаем прямо сейчас</h2>
+    <div class="road">
+      <div class="road__q"><b>Week 1</b><p>Ядро продукта + оформление каналов. Манифест закреплён, лендинг с waitlist.</p></div>
+      <div class="road__q"><b>Week 2</b><p>Вишлист и история, закрытая бета на 10 пар, контент-план TG/IG/Threads.</p></div>
+    </div>
+    <div class="proof" style="margin-top:40px">
+      <div class="proof__item"><b>180</b><span>подписчиков за 2 недели</span></div>
+      <div class="proof__item"><b>1 500</b><span>охватов</span></div>
+      <div class="proof__item"><b>35</b><span>заявок в waitlist</span></div>
+      <div class="proof__item"><b>10</b><span>пар в закрытой бете</span></div>
+    </div>
+    <span class="slide__num"><b>16</b> / 17</span>
+  </section>
+
+  <!-- 17. ФИНАЛ -->
   <section class="slide final">
     <span class="slide__tag">Moora</span>
-    <h2 class="final__quote">Любовь — это не громкие слова.<br /> Любовь — это <em>бережно</em>.</h2>
+    <h2 class="final__quote">Любовь — это не громкие слова.<br /> Любовь — это <em>про настоящую близость</em>.</h2>
     <div class="final__contacts">
       <span><b>[сайт]</b></span>
       <span><b>[email]</b></span>
       <span><b>[telegram]</b></span>
       <span><b>[QR]</b></span>
     </div>
-    <span class="slide__num"><b>16</b> / 16</span>
+    <span class="slide__num"><b>17</b> / 17</span>
   </section>
 
 </div>
 
 <nav class="nav" aria-label="Навигация по слайдам">
   <button class="nav__btn" id="prev" aria-label="Назад">←</button>
-  <span class="nav__count"><b id="cur">1</b> / <span id="total">16</span></span>
+  <span class="nav__count"><b id="cur">1</b> / <span id="total">17</span></span>
   <button class="nav__btn" id="next" aria-label="Дальше">→</button>
 </nav>
 
