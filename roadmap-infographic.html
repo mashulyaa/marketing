@@ -62,7 +62,7 @@
   .phase__sub { color: var(--ink-dim); font-size: 14.5px; margin-left: auto; }
 
   /* week cards */
-  .weeks { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 26px); }
+  .weeks { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 1.8vw, 22px); }
   .wk {
     position: relative; background: #fff; border: 1px solid var(--line);
     border-radius: 18px; padding: clamp(22px, 2.4vw, 32px);
@@ -72,6 +72,7 @@
   .wk:nth-child(1)::before { background: var(--violet); }
   .wk:nth-child(2)::before { background: var(--rose); }
   .wk:nth-child(3)::before { background: var(--gold); }
+  .wk:nth-child(4)::before { background: var(--mint); }
   .wk__label { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-dim); font-weight: 600; }
   .wk__title { font-family: var(--font-display); font-size: clamp(21px, 2vw, 27px); font-weight: 600; margin-top: 6px; }
   .wk__date { font-size: 13px; color: var(--rose); font-weight: 600; margin-top: 4px; }
@@ -82,6 +83,43 @@
   .wk__metrics { margin-top: auto; padding-top: 18px; border-top: 1px dashed var(--line); }
   .wk__metrics span { display: block; font-size: 12.5px; color: var(--ink-dim); padding: 3px 0; }
   .wk__metrics b { color: var(--ink); font-weight: 700; font-family: var(--font-display); font-size: 16px; }
+
+  /* daily plan table */
+  .daily { margin-top: clamp(36px, 4vw, 56px); }
+  .daily h3 { font-family: var(--font-display); font-size: clamp(22px, 2.4vw, 30px); font-weight: 600; margin-bottom: 6px; }
+  .daily > p { color: var(--ink-dim); font-size: 14px; margin-bottom: 22px; }
+  table.plan { width: 100%; border-collapse: collapse; font-size: clamp(12.5px, 1vw, 14px); }
+  table.plan th, table.plan td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.plan th { font-family: var(--font-display); font-weight: 600; font-size: clamp(14px, 1.1vw, 16px); color: var(--ink); }
+  table.plan td { color: var(--ink-dim); }
+  table.plan td:first-child { color: var(--ink); font-weight: 600; white-space: nowrap; }
+  table.plan tr:hover td { background: rgba(255, 126, 166, .06); }
+  .pill { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 100px; letter-spacing: .04em; }
+  .pill--prod { background: rgba(139, 92, 246, .14); color: var(--violet); }
+  .pill--mkt { background: rgba(240, 71, 122, .14); color: var(--rose); }
+  .pill--ops { background: rgba(46, 211, 167, .16); color: #1a9e7c; }
+
+  /* monthly summary */
+  .msum { margin-top: clamp(40px, 5vw, 64px); display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(20px, 3vw, 40px); align-items: start; }
+  .msum__card { border: 1px solid var(--line); border-radius: 18px; background: #fff; padding: clamp(24px, 3vw, 38px); }
+  .msum__card h3 { font-family: var(--font-display); font-size: clamp(22px, 2.4vw, 30px); font-weight: 600; }
+  .msum__card > p { color: var(--ink-dim); font-size: 14px; margin-top: 8px; margin-bottom: 18px; }
+  .kpi { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .kpi__i { padding-top: 14px; border-top: 3px solid var(--line); }
+  .kpi__i:nth-child(1) { border-top-color: var(--rose); }
+  .kpi__i:nth-child(2) { border-top-color: var(--violet); }
+  .kpi__i:nth-child(3) { border-top-color: var(--gold); }
+  .kpi__i:nth-child(4) { border-top-color: var(--mint); }
+  .kpi__i b { font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px); font-weight: 700; }
+  .kpi__i:nth-child(1) b { color: var(--rose); }
+  .kpi__i:nth-child(2) b { color: var(--violet); }
+  .kpi__i:nth-child(3) b { color: var(--gold); }
+  .kpi__i:nth-child(4) b { color: var(--mint); }
+  .kpi__i span { display: block; font-size: 12.5px; color: var(--ink-dim); margin-top: 4px; }
+  .msum__check { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .msum__check li { position: relative; padding-left: 28px; font-size: 14px; line-height: 1.5; color: var(--ink-dim); }
+  .msum__check li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--mint); font-weight: 700; }
+  .msum__check b { color: var(--ink); font-weight: 600; }
 
   /* stage rail */
   .rail { position: relative; margin-top: clamp(50px, 6vw, 84px); }
@@ -137,6 +175,10 @@
 
   @media (max-width: 900px) {
     .weeks, .rail__grid, .future__flow { grid-template-columns: 1fr; }
+    .msum { grid-template-columns: 1fr; }
+    .kpi { grid-template-columns: repeat(2, 1fr); }
+    table.plan { font-size: 12px; }
+    table.plan th, table.plan td { padding: 9px 8px; }
     .rail::before { display: none; }
     .node { padding-top: 0; padding-left: 30px; }
     .node::before { top: 4px; }
@@ -150,16 +192,16 @@
   <header class="head">
     <span class="head__tag">План развития · Moora</span>
     <h1>От ядра — к <em>близости</em></h1>
-    <p>Дорожная карта продукта и рынка. Сейчас — приложение для пар. Дальше — возможно, и дейтинг.</p>
+    <p>Подробный план на первый месяц, путь на год и возможное расширение в дейтинг.</p>
     <div class="rainbow"></div>
   </header>
 
-  <!-- ПЕРВЫЕ 3 НЕДЕЛИ -->
+  <!-- ПЕРВЫЙ МЕСЯЦ -->
   <section class="phase">
     <div class="phase__head">
       <span class="phase__num">01</span>
-      <h2 class="phase__title">Первые 3 недели</h2>
-      <span class="phase__sub">28.09 – 18.10.2026 · ядро, каналы, первые пары</span>
+      <h2 class="phase__title">Первый месяц</h2>
+      <span class="phase__sub">28.09 – 25.10.2026 · ядро, каналы, первые пары, рост</span>
     </div>
     <div class="weeks">
       <div class="wk">
@@ -172,6 +214,7 @@
           <li><b>Тест языка любви</b> + результат</li>
           <li><b>Манифест</b> закреплён в TG / IG / VK</li>
           <li><b>Каналы</b> оформлены, лендинг с waitlist</li>
+          <li><b>Домен</b> и форма заявки на лендинге</li>
         </ul>
         <div class="wk__metrics">
           <span>Онбординг до конца — <b>60%</b></span>
@@ -189,6 +232,7 @@
           <li><b>Закрытая бета</b> — 10 пар</li>
           <li><b>Запуск</b> Threads и Twitter EN</li>
           <li><b>Контент</b> под TG / IG / Threads, VK — дубль</li>
+          <li><b>Reels</b> «До/после» (скринкаст)</li>
         </ul>
         <div class="wk__metrics">
           <span>Первый диалог — <b>8 пар</b></span>
@@ -206,12 +250,98 @@
           <li><b>UGC</b> «Скажи это бережно»</li>
           <li><b>Реферальная механика</b> «пригласи партнёра»</li>
           <li><b>Коллаборации</b> с профильными аккаунтами</li>
+          <li><b>Стабилизация</b> ядра по фидбеку</li>
         </ul>
         <div class="wk__metrics">
           <span>Вишлист создан — <b>5 пар</b></span>
           <span>Подписчики — <b>250</b></span>
           <span>Заявки — <b>30</b> · Охваты — <b>700+</b></span>
         </div>
+      </div>
+      <div class="wk">
+        <span class="wk__label">Неделя 4</span>
+        <h3 class="wk__title">PMF и публичный старт</h3>
+        <div class="wk__date">19.10 – 25.10</div>
+        <ul class="wk__list">
+          <li><b>Метрика retention</b> — замер возвращаемости пар</li>
+          <li><b>Публичная бета</b> — открытие waitlist в продукт</li>
+          <li><b>Отзывы</b> — сбор первых историй пар</li>
+          <li><b>Юнит-экономика</b> — гипотезы тарифов (без запуска)</li>
+          <li><b>Контент-машина</b> — план на месяц вперёд</li>
+          <li><b>EN-версия</b> — манифест и посты для Twitter</li>
+        </ul>
+        <div class="wk__metrics">
+          <span>Retention D7 — <b>40%</b></span>
+          <span>Пар в продукте — <b>30</b></span>
+          <span>Подписчики — <b>350</b> · Заявки — <b>50</b></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ДЕТАЛЬНЫЙ ПЛАН ПО ДНЯМ -->
+    <div class="daily">
+      <h3>Детально по дням месяца</h3>
+      <p>Что делаем каждый день: продукт, маркетинг и операционка.</p>
+      <table class="plan">
+        <thead>
+          <tr><th>Дата</th><th>Направление</th><th>Задача</th><th>Результат / метрика</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Пн 28.09</td><td><span class="pill pill--mkt">Маркетинг</span></td><td>Закрепить манифест в TG, IG, VK; старт лендинга</td><td>Охват 150, лендинг опубликован</td></tr>
+          <tr><td>Вт 29.09</td><td><span class="pill pill--ops">Операционка</span></td><td>Оформить все каналы: аватар, описание, ссылки, хайлайты</td><td>4 площадки готовы</td></tr>
+          <tr><td>Ср 30.09</td><td><span class="pill pill--prod">Продукт</span></td><td>Мокапы 5 экранов в едином стиле</td><td>5 экранов готово</td></tr>
+          <tr><td>Чт 01.10</td><td><span class="pill pill--prod">Продукт</span></td><td>Онбординг пары: данные обоих + согласие</td><td>Онбординг работает</td></tr>
+          <tr><td>Пт 02.10</td><td><span class="pill pill--prod">Продукт</span></td><td>Тест языка любви + экран результата</td><td>Тест пройден у 50%</td></tr>
+          <tr><td>Сб 03.10</td><td><span class="pill pill--mkt">Маркетинг</span></td><td>Reels «Язык любви за 30 сек» (скринкаст)</td><td>Охват 200</td></tr>
+          <tr><td>Вс 04.10</td><td><span class="pill pill--mkt">Маркетинг</span></td><td>Карусель-манифест; ревью недели 1</td><td>Подписчики +60, заявки 15</td></tr>
+          <tr><td>Пн 05.10</td><td><span class="pill pill--prod">Продукт</span></td><td>Двусторонний чат: черновик → перевод → одобрение</td><td>Первый диалог создан</td></tr>
+          <tr><td>Вт 06.10</td><td><span class="pill pill--mkt">Маркетинг</span></td><td>Запуск Threads (через IG) и Twitter EN</td><td>Первые 3+3 поста</td></tr>
+          <tr><td>Ср 07.10</td><td><span class="pill pill--prod">Продукт</span></td><td>Вишлист-подарки + напоминания о датах</td><td>Вишлист работает</td></tr>
+          <tr><td>Чт 08.10</td><td><span class="pill pill--mkt">Маркетинг</span></td><td>Reels «До/после» (скринкаст) + пост в TG</td><td>Охват 300</td></tr>
+          <tr><td>Пт 09.10</td><td><span class="pill pill--mkt">Маркетинг</span></td><td>Закрытая бета: приглашение 10 пар; анонс</td><td>10 пар в бете</td></tr>
+          <tr><td>Сб 10.10</td><td><span class="pill pill--mkt">Маркетинг</span></td><td>Карусель «5 языков любви»</td><td>Сохранений 10</td></tr>
+          <tr><td>Вс 11.10</td><td><span class="pill pill--ops">Операционка</span></td><td>Ревью недели 2; сверка метрик с целями</td><td>Подписчики +120, 8 диалогов</td></tr>
+          <tr><td>Пн 12.10</td><td><span class="pill pill--prod">Продукт</span></td><td>История переписки + подсказки по тону</td><td>Tone-совет работает</td></tr>
+          <tr><td>Вт 13.10</td><td><span class="pill pill--mkt">Маркетинг</span></td><td>Запуск UGC «Скажи это бережно»</td><td>5 присланных историй</td></tr>
+          <tr><td>Ср 14.10</td><td><span class="pill pill--ops">Операционка</span></td><td>Фидбек-сессия с бета-парами</td><td>10 правок в бэклог</td></tr>
+          <tr><td>Чт 15.10</td><td><span class="pill pill--prod">Продукт</span></td><td>Стабилизация ядра по фидбеку</td><td>Критичные баги закрыты</td></tr>
+          <tr><td>Пт 16.10</td><td><span class="pill pill--mkt">Маркетинг</span></td><td>Реферальная механика «пригласи партнёра»</td><td>Механика описана</td></tr>
+          <tr><td>Сб 17.10</td><td><span class="pill pill--mkt">Маркетинг</span></td><td>Коллаборации — первые договорённости</td><td>2 партнёрства</td></tr>
+          <tr><td>Вс 18.10</td><td><span class="pill pill--ops">Операционка</span></td><td>Ревью недели 3; план на 4-ю неделю</td><td>Подписчики 250, заявки 30</td></tr>
+          <tr><td>Пн 19.10</td><td><span class="pill pill--prod">Продукт</span></td><td>Замер retention: кто вернулся на 7-й день</td><td>Retention D7 40%</td></tr>
+          <tr><td>Вт 20.10</td><td><span class="pill pill--mkt">Маркетинг</span></td><td>Публичная бета: открыть waitlist в продукт</td><td>Ещё 20 пар</td></tr>
+          <tr><td>Ср 21.10</td><td><span class="pill pill--mkt">Маркетинг</span></td><td>Сбор первых отзывов пар</td><td>5 отзывов</td></tr>
+          <tr><td>Чт 22.10</td><td><span class="pill pill--ops">Операционка</span></td><td>Юнит-экономика: гипотезы тарифов (без запуска)</td><td>Модель посчитана</td></tr>
+          <tr><td>Пт 23.10</td><td><span class="pill pill--mkt">Маркетинг</span></td><td>Контент-план на следующий месяц</td><td>30 дней контента</td></tr>
+          <tr><td>Сб 24.10</td><td><span class="pill pill--mkt">Маркетинг</span></td><td>EN-версия манифеста и постов для Twitter</td><td>EN-пакет готов</td></tr>
+          <tr><td>Вс 25.10</td><td><span class="pill pill--ops">Операционка</span></td><td>Итоги месяца: отчёт и решение по Q1</td><td>30 пар, 350 подписчиков</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ИТОГ МЕСЯЦА -->
+    <div class="msum">
+      <div class="msum__card">
+        <h3>Итог первого месяца</h3>
+        <p>Ключевые цифры, если всё идёт по плану.</p>
+        <div class="kpi">
+          <div class="kpi__i"><b>350</b><span>подписчиков суммарно</span></div>
+          <div class="kpi__i"><b>50</b><span>заявок в waitlist</span></div>
+          <div class="kpi__i"><b>30</b><span>пар в продукте</span></div>
+          <div class="kpi__i"><b>40%</b><span>retention D7</span></div>
+        </div>
+      </div>
+      <div class="msum__card">
+        <h3>Что должно быть верно</h3>
+        <p>Критерии, что месяц закрыт успешно.</p>
+        <ul class="msum__check">
+          <li>Ядро работает <b>end-to-end</b>: онбординг → тест → чат → одобрение.</li>
+          <li><b>Вишлист и история</b> в продукте, tone-советы отвечают.</li>
+          <li><b>5 каналов</b> живут и публикуют: TG, IG, Threads, VK, Twitter EN.</li>
+          <li>Есть <b>30 пар</b> и первые <b>отзывы</b> от беты.</li>
+          <li>Собран <b>бэклог правок</b> из реального фидбека.</li>
+          <li>Готов <b>контент-план</b> на следующий месяц.</li>
+        </ul>
       </div>
     </div>
   </section>
