@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Moora — нежное лого</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --plum-deep: #2E0814;
+    --plum: #4A0E22;
+    --plum-2: #6A1730;
+    --cream: #FBF5EE;
+    --pink: #F7C6D4;
+    --rose: #E88BA8;
+    --violet: #B18CD9;
+    --gold: #E9C7A0;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font: 'Golos Text', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #1E070E;
+    color: var(--cream);
+    font-family: var(--font);
+    padding: 46px 24px 96px;
+  }
+
+  .sheet { max-width: 1080px; margin: 0 auto; }
+
+  .page-title { font-family: var(--font-display); font-weight: 600; font-size: 28px; }
+  .page-sub { margin-top: 6px; color: rgba(251, 245, 238, .5); font-size: 13.5px; line-height: 1.65; max-width: 72ch; }
+  .review { margin: 26px 0 44px; padding: 18px 22px; border: 1px solid rgba(251, 245, 238, .12); border-radius: 14px; background: rgba(251, 245, 238, .03); font-size: 14px; line-height: 1.7; color: rgba(251, 245, 238, .75); }
+  .review b { color: var(--pink); font-weight: 600; }
+
+  /* ============ ЛОКАП ============ */
+  .lockup { display: flex; align-items: center; gap: 26px; padding: 30px 0 54px; }
+  .lockup__icon { width: 96px; height: 96px; flex: none; border-radius: 28%; display: grid; place-items: center; position: relative; background: radial-gradient(120% 120% at 30% 22%, var(--plum-2), var(--plum) 55%, var(--plum-deep)); box-shadow: 0 18px 44px -20px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.05); }
+  .lockup__icon .mark { width: 66%; }
+  .lockup__meta { display: flex; flex-direction: column; gap: 6px; }
+  .lockup__word { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 44px; line-height: 1; letter-spacing: .01em; }
+  .lockup__tag { font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: rgba(251, 245, 238, .55); }
+  .lockup__flourish { width: 200px; margin-top: 8px; }
+
+  /* ============ ГРИД ============ */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 36px 28px; }
+  .cell { display: flex; flex-direction: column; gap: 13px; align-items: center; }
+  .cell__name { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: rgba(251, 245, 238, .5); }
+  .cell__hint { font-size: 12px; color: rgba(251, 245, 238, .32); text-align: center; line-height: 1.5; }
+
+  /* ============ ИКОНКА ============ */
+  .app-icon {
+    width: 212px; height: 212px;
+    border-radius: 30%;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    flex: none;
+    isolation: isolate;
+    box-shadow: 0 24px 58px -26px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.04);
+  }
+  .app-icon--circle { border-radius: 50%; }
+  .app-icon--dark { background: radial-gradient(120% 120% at 30% 22%, var(--plum-2), var(--plum) 55%, var(--plum-deep) 100%); }
+  .app-icon--flat { background: var(--plum); }
+  .app-icon--cream { background: var(--cream); }
+
+  .glow {
+    position: absolute;
+    width: 68%; height: 68%;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(247, 198, 212, .55), transparent 72%);
+    filter: blur(20px);
+    opacity: .5;
+    z-index: -1;
+  }
+  .app-icon--cream .glow { background: radial-gradient(closest-side, rgba(232, 139, 168, .35), transparent 72%); }
+
+  /* ============ ЗНАК: два сердца ============ */
+  .mark { width: 58%; height: auto; overflow: visible; }
+  .mark--big { width: 66%; }
+
+  .mark .h--main { fill: var(--hf1, none); stroke: var(--hs1, var(--pink)); stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; }
+  .mark .h--side { fill: var(--hf2, none); stroke: var(--hs2, var(--violet)); stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
+  .mark .spark { fill: var(--sp, var(--gold)); stroke: none; }
+
+  /* палитры вариантов */
+  .app-icon--dark, .lockup__icon { --hs1: url(#g1); --hf1: rgba(247, 198, 212, .14); --hs2: #B18CD9; --hf2: none; --sp: #E9C7A0; }
+  .app-icon--flat { --hs1: #FBF5EE; --hf1: none; --hs2: #F7C6D4; --hf2: none; --sp: #F7C6D4; }
+  .app-icon--cream { --hs1: #E88BA8; --hf1: rgba(232, 139, 168, .12); --hs2: #4A0E22; --hf2: none; --sp: #E88BA8; }
+  .app-icon--duo { --hs1: none; --hf1: #F7C6D4; --hs2: none; --hf2: #B18CD9; --sp: #E9C7A0; }
+
+  .mark--lit { filter: drop-shadow(0 0 16px rgba(232, 139, 168, .4)); }
+  .app-icon--flat .mark--lit { filter: none; }
+
+  @media (max-width: 640px) {
+    .app-icon { width: 170px; height: 170px; }
+    .lockup { gap: 18px; }
+    .lockup__word { font-size: 34px; }
+    .lockup__icon { width: 80px; height: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- градиент для штриха -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F7C6D4" />
+      <stop offset="1" stop-color="#B18CD9" />
+    </linearGradient>
+    <symbol id="heart" viewBox="0 0 24 24">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+    </symbol>
+  </defs>
+</svg>
+
+<div class="sheet">
+
+  <h1 class="page-title">Moora — нежное лого</h1>
+  <p class="page-sub">Два сердца, сплетённые в одно целое: главное — контур с градиентом, второе — лёгкий силуэт рядом. Мгновенно читается «пара», при этом выглядит деликатно и современно.</p>
+
+  <div class="review">
+    <b>Ревью:</b> ушёл от абстрактных линий и монограмм — они выглядели «проволочными». Теперь знак собран из <b>двух эталонных сердец</b> (классическая геометрия), пересекающихся как двое в отношениях: розовый градиентный контур + лавандовое сердце-спутник, искра сверху — романтичный момент. Тонкая линия, мягкое свечение, супер-скругление 30% — нежный минимализм 2026.
+  </div>
+
+  <!-- Локап -->
+  <div class="lockup">
+    <div class="lockup__icon">
+      <svg class="mark mark--lit" viewBox="0 0 72 72" aria-hidden="true">
+        <use href="#heart" class="h--main" transform="translate(6 10) scale(1.9)" />
+        <use href="#heart" class="h--side" transform="translate(26 24) scale(1.5)" />
+        <path class="spark" d="M12 4 l2 5.6 5.6 2 -5.6 2 -2 5.6 -2 -5.6 -5.6 -2 5.6 -2 Z" />
+      </svg>
+    </div>
+    <div class="lockup__meta">
+      <span class="lockup__word">Moora</span>
+      <span class="lockup__tag">скажи важное — бережно</span>
+      <svg class="lockup__flourish" viewBox="0 0 200 26" fill="none" aria-hidden="true">
+        <path d="M6 15 C34 7 62 23 92 15 C116 8 146 23 172 14" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" />
+        <use href="#heart" transform="translate(173 2) scale(0.75)" fill="var(--pink)" stroke="none" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 1. Главная -->
+    <div class="cell">
+      <div class="app-icon app-icon--dark">
+        <span class="glow"></span>
+        <svg class="mark mark--lit" viewBox="0 0 72 72" aria-hidden="true">
+          <use href="#heart" class="h--main" transform="translate(6 10) scale(1.9)" />
+          <use href="#heart" class="h--side" transform="translate(26 24) scale(1.5)" />
+          <path class="spark" d="M12 4 l2 5.6 5.6 2 -5.6 2 -2 5.6 -2 -5.6 -5.6 -2 5.6 -2 Z" />
+        </svg>
+      </div>
+      <span class="cell__name">Главная</span>
+      <span class="cell__hint">Градиент + лаванда на глубоком бордо</span>
+    </div>
+
+    <!-- 2. Круглая -->
+    <div class="cell">
+      <div class="app-icon app-icon--dark app-icon--circle">
+        <span class="glow"></span>
+        <svg class="mark mark--lit" viewBox="0 0 72 72" aria-hidden="true">
+          <use href="#heart" class="h--main" transform="translate(6 10) scale(1.9)" />
+          <use href="#heart" class="h--side" transform="translate(26 24) scale(1.5)" />
+          <path class="spark" d="M12 4 l2 5.6 5.6 2 -5.6 2 -2 5.6 -2 -5.6 -5.6 -2 5.6 -2 Z" />
+        </svg>
+      </div>
+      <span class="cell__name">Круглая</span>
+      <span class="cell__hint">Для аватарок соцсетей</span>
+    </div>
+
+    <!-- 3. Одноцветная -->
+    <div class="cell">
+      <div class="app-icon app-icon--flat">
+        <span class="glow"></span>
+        <svg class="mark" viewBox="0 0 72 72" aria-hidden="true">
+          <use href="#heart" class="h--main" transform="translate(6 10) scale(1.9)" />
+          <use href="#heart" class="h--side" transform="translate(26 24) scale(1.5)" />
+          <path class="spark" d="M12 4 l2 5.6 5.6 2 -5.6 2 -2 5.6 -2 -5.6 -5.6 -2 5.6 -2 Z" />
+        </svg>
+      </div>
+      <span class="cell__name">Одноцветная</span>
+      <span class="cell__hint">Крем + роза на плоском бордо</span>
+    </div>
+
+    <!-- 4. Светлая -->
+    <div class="cell">
+      <div class="app-icon app-icon--cream">
+        <span class="glow"></span>
+        <svg class="mark" viewBox="0 0 72 72" aria-hidden="true">
+          <use href="#heart" class="h--main" transform="translate(6 10) scale(1.9)" />
+          <use href="#heart" class="h--side" transform="translate(26 24) scale(1.5)" />
+          <path class="spark" d="M12 4 l2 5.6 5.6 2 -5.6 2 -2 5.6 -2 -5.6 -5.6 -2 5.6 -2 Z" />
+        </svg>
+      </div>
+      <span class="cell__name">Светлая</span>
+      <span class="cell__hint">Роза + бордо на кремовом</span>
+    </div>
+
+    <!-- 5. Дуэт -->
+    <div class="cell">
+      <div class="app-icon app-icon--dark app-icon--duo">
+        <span class="glow"></span>
+        <svg class="mark mark--lit" viewBox="0 0 72 72" aria-hidden="true">
+          <use href="#heart" class="h--main" transform="translate(6 10) scale(1.9)" />
+          <use href="#heart" class="h--side" transform="translate(26 24) scale(1.5)" />
+          <path class="spark" d="M12 4 l2 5.6 5.6 2 -5.6 2 -2 5.6 -2 -5.6 -5.6 -2 5.6 -2 Z" />
+        </svg>
+      </div>
+      <span class="cell__name">Дуэт</span>
+      <span class="cell__hint">Дуотон: пудра + лаванда заливкой</span>
+    </div>
+
+    <!-- 6. Крупно -->
+    <div class="cell">
+      <div class="app-icon app-icon--dark">
+        <span class="glow"></span>
+        <svg class="mark mark--lit mark--big" viewBox="0 0 72 72" aria-hidden="true">
+          <use href="#heart" class="h--main" transform="translate(6 10) scale(1.9)" />
+          <use href="#heart" class="h--side" transform="translate(26 24) scale(1.5)" />
+          <path class="spark" d="M12 4 l2 5.6 5.6 2 -5.6 2 -2 5.6 -2 -5.6 -5.6 -2 5.6 -2 Z" />
+        </svg>
+      </div>
+      <span class="cell__name">Крупно</span>
+      <span class="cell__hint">Знак ближе — для обложек</span>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Moora — лого для аватарок</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,600&family=Golos+Text:wght@600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #2E0A1A;
+    --bg-2: #3D0E23;
+    --cream: #FCF6EE;
+    --plum: #3A0C22;
+    --pink: #F7C4D6;
+    --rose: #EC8FB0;
+    --violet: #A98BD6;
+    --line: rgba(252, 246, 238, .18);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font: 'Golos Text', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #1c0611;
+    color: var(--cream);
+    font-family: var(--font);
+    padding: 48px 24px 80px;
+  }
+
+  .page-title {
+    max-width: 1000px;
+    margin: 0 auto 8px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 30px;
+  }
+  .page-sub {
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    color: rgba(252, 246, 238, .55);
+    font-size: 14px;
+  }
+
+  .grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 28px;
+  }
+
+  .cell { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+  .cell__name { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(252, 246, 238, .5); }
+  .cell__hint { font-size: 12px; color: rgba(252, 246, 238, .35); text-align: center; }
+
+  /* =====================================================
+     БАЗОВЫЙ АВАТАР — круглый, 1:1
+     Используйте .avatar--X вместе с .avatar
+     ===================================================== */
+  .avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    flex: none;
+    box-shadow: 0 20px 50px -20px rgba(0, 0, 0, .7);
+  }
+
+  /* --- Сердце (SVG через mask, чтобы менять цвет) --- */
+  .heart {
+    display: block;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 23c-.4 0-.8-.15-1.1-.43-2.6-2.35-6.9-6.05-6.9-9.62 0-2.3 1.82-4.1 4.05-4.1 1.28 0 2.48.6 3.25 1.55a4.27 4.27 0 0 1 3.25-1.55c2.23 0 4.05 1.8 4.05 4.1 0 3.57-4.3 7.27-6.9 9.62-.3.28-.7.43-1.1.43Z'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 23c-.4 0-.8-.15-1.1-.43-2.6-2.35-6.9-6.05-6.9-9.62 0-2.3 1.82-4.1 4.05-4.1 1.28 0 2.48.6 3.25 1.55a4.27 4.27 0 0 1 3.25-1.55c2.23 0 4.05 1.8 4.05 4.1 0 3.57-4.3 7.27-6.9 9.62-.3.28-.7.43-1.1.43Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+
+  /* --- Вариант 1: сердце на тёмном --- */
+  .avatar--dark { background: radial-gradient(circle at 30% 25%, var(--bg-2), var(--bg) 70%); }
+  .avatar--dark .heart { width: 96px; height: 96px; background: var(--pink); }
+
+  /* --- Вариант 2: монограмма M --- */
+  .avatar--mono { background: linear-gradient(150deg, var(--rose), var(--violet)); }
+  .avatar--mono .mono {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 108px;
+    line-height: 1;
+    color: var(--plum);
+    transform: translateY(-4px);
+  }
+
+  /* --- Вариант 3: светлый, сердце + имя --- */
+  .avatar--light { background: var(--cream); color: var(--plum); }
+  .avatar--light .stack { display: grid; place-items: center; gap: 6px; }
+  .avatar--light .heart { width: 64px; height: 64px; background: var(--rose); }
+  .avatar--light .word { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 34px; color: var(--plum); }
+
+  /* --- Вариант 4: кольцо + сердце --- */
+  .avatar--ring { background: var(--bg); }
+  .avatar--ring::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+  }
+  .avatar--ring .heart { width: 84px; height: 84px; background: linear-gradient(140deg, var(--pink), var(--violet)); }
+
+  /* --- Вариант 5: буквица Mood/Moora на градиенте --- */
+  .avatar--grad { background: linear-gradient(160deg, #4A1030, #2E173F); }
+  .avatar--grad .stack { display: grid; place-items: center; gap: 2px; text-align: center; }
+  .avatar--grad .mark { width: 44px; height: 44px; background: var(--cream); }
+  .avatar--grad .word { font-family: var(--font-display); font-weight: 600; font-size: 26px; letter-spacing: .02em; }
+  .avatar--grad .sub { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: rgba(252, 246, 238, .6); }
+
+  /* --- Инверс: кремовый на сердце-плашке --- */
+  .avatar--inv { background: var(--rose); }
+  .avatar--inv .heart { width: 84px; height: 84px; background: var(--plum); }
+
+  @media (max-width: 640px) {
+    .avatar { width: 160px; height: 160px; }
+    .avatar--dark .heart { width: 76px; height: 76px; }
+    .avatar--mono .mono { font-size: 88px; }
+    .avatar--light .heart { width: 52px; height: 52px; }
+    .avatar--light .word { font-size: 28px; }
+    .avatar--ring .heart { width: 68px; height: 68px; }
+    .avatar--inv .heart { width: 68px; height: 68px; }
+  }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">Moora — аватарки</h1>
+<p class="page-sub">Готовые круглые лого 1:1. Откройте страницу и сделайте скриншот нужного варианта — или сохраните через инструменты разработчика. Размеры адаптируются, цвета меняются в CSS-переменных.</p>
+
+<div class="grid">
+
+  <div class="cell">
+    <div class="avatar avatar--dark">
+      <span class="heart"></span>
+    </div>
+    <span class="cell__name">Сердце</span>
+    <span class="cell__hint">Основной: сердце на тёмном бордо</span>
+  </div>
+
+  <div class="cell">
+    <div class="avatar avatar--mono">
+      <span class="mono">M</span>
+    </div>
+    <span class="cell__name">Монограмма</span>
+    <span class="cell__hint">Итало-буквица M на градиенте</span>
+  </div>
+
+  <div class="cell">
+    <div class="avatar avatar--light">
+      <span class="stack">
+        <span class="heart"></span>
+        <span class="word">Moora</span>
+      </span>
+    </div>
+    <span class="cell__name">Светлый</span>
+    <span class="cell__hint">Кремовый с сердцем и именем</span>
+  </div>
+
+  <div class="cell">
+    <div class="avatar avatar--ring">
+      <span class="heart"></span>
+    </div>
+    <span class="cell__name">Кольцо</span>
+    <span class="cell__hint">Тонкое кольцо и градиентное сердце</span>
+  </div>
+
+  <div class="cell">
+    <div class="avatar avatar--grad">
+      <span class="stack">
+        <span class="heart mark"></span>
+        <span class="word">Moora</span>
+        <span class="sub">бережно</span>
+      </span>
+    </div>
+    <span class="cell__name">Градиент</span>
+    <span class="cell__hint">Марка + имя + подпись</span>
+  </div>
+
+  <div class="cell">
+    <div class="avatar avatar--inv">
+      <span class="heart"></span>
+    </div>
+    <span class="cell__name">Инверсия</span>
+    <span class="cell__hint">Розовый фон, тёмное сердце</span>
+  </div>
+
+</div>
+
+</body>
+</html>
