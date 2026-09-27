@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Moora — инфографика плана развития</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #FBF7F1;
+    --paper-2: #F3E9DE;
+    --ink: #2E1420;
+    --ink-dim: rgba(46, 20, 32, .62);
+    --line: rgba(46, 20, 32, .14);
+    --pink: #FF7EA6;
+    --rose: #F0477A;
+    --violet: #8B5CF6;
+    --gold: #F5A623;
+    --mint: #2ED3A7;
+    --sky: #38BDF8;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font: 'Golos Text', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font);
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    padding: clamp(28px, 5vw, 80px) clamp(20px, 5vw, 70px);
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+
+  .head { text-align: center; margin-bottom: clamp(40px, 6vw, 78px); }
+  .head__tag {
+    display: inline-block; font-size: 13px; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--rose); font-weight: 600;
+    padding: 7px 16px; border: 1px solid var(--line); border-radius: 100px;
+    background: #fff;
+  }
+  .head h1 {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: clamp(40px, 6.6vw, 82px); line-height: 1.02;
+    margin-top: 22px; letter-spacing: -.01em;
+  }
+  .head h1 em { font-style: italic; color: var(--rose); }
+  .head p { color: var(--ink-dim); margin-top: 16px; font-size: clamp(15px, 1.6vw, 19px); max-width: 620px; margin-inline: auto; }
+
+  .rainbow { height: 6px; border-radius: 100px; margin: clamp(28px, 4vw, 46px) auto 0; max-width: 240px;
+    background: linear-gradient(90deg, var(--rose), var(--pink), var(--violet), var(--sky), var(--mint), var(--gold)); }
+
+  /* timeline base */
+  .phase { margin-top: clamp(50px, 6vw, 84px); }
+  .phase__head { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; margin-bottom: 26px; }
+  .phase__num {
+    font-family: var(--font-display); font-style: italic; font-weight: 700;
+    font-size: clamp(34px, 4vw, 54px); line-height: 1; color: var(--rose);
+  }
+  .phase__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, 3vw, 38px); }
+  .phase__sub { color: var(--ink-dim); font-size: 14.5px; margin-left: auto; }
+
+  /* week cards */
+  .weeks { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 26px); }
+  .wk {
+    position: relative; background: #fff; border: 1px solid var(--line);
+    border-radius: 18px; padding: clamp(22px, 2.4vw, 32px);
+    display: flex; flex-direction: column;
+  }
+  .wk::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; border-radius: 18px 18px 0 0; }
+  .wk:nth-child(1)::before { background: var(--violet); }
+  .wk:nth-child(2)::before { background: var(--rose); }
+  .wk:nth-child(3)::before { background: var(--gold); }
+  .wk__label { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-dim); font-weight: 600; }
+  .wk__title { font-family: var(--font-display); font-size: clamp(21px, 2vw, 27px); font-weight: 600; margin-top: 6px; }
+  .wk__date { font-size: 13px; color: var(--rose); font-weight: 600; margin-top: 4px; }
+  .wk__list { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 9px; }
+  .wk__list li { position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.5; color: var(--ink-dim); }
+  .wk__list li::before { content: ""; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--rose); opacity: .55; }
+  .wk__list b { color: var(--ink); font-weight: 600; }
+  .wk__metrics { margin-top: auto; padding-top: 18px; border-top: 1px dashed var(--line); }
+  .wk__metrics span { display: block; font-size: 12.5px; color: var(--ink-dim); padding: 3px 0; }
+  .wk__metrics b { color: var(--ink); font-weight: 700; font-family: var(--font-display); font-size: 16px; }
+
+  /* stage rail */
+  .rail { position: relative; margin-top: clamp(50px, 6vw, 84px); }
+  .rail::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 24px; height: 4px; border-radius: 100px;
+    background: linear-gradient(90deg, var(--violet), var(--rose), var(--gold), var(--mint), var(--sky));
+  }
+  .rail__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(12px, 1.6vw, 22px); position: relative; }
+  .node { padding-top: 52px; position: relative; }
+  .node::before {
+    content: ""; position: absolute; top: 16px; left: 0; width: 20px; height: 20px;
+    border-radius: 50%; background: var(--paper); border: 4px solid var(--rose);
+  }
+  .node:nth-child(1)::before { border-color: var(--violet); }
+  .node:nth-child(2)::before { border-color: var(--rose); }
+  .node:nth-child(3)::before { border-color: var(--gold); }
+  .node:nth-child(4)::before { border-color: var(--mint); }
+  .node:nth-child(5)::before { border-color: var(--sky); }
+  .node__q { font-family: var(--font-display); font-style: italic; font-size: 17px; font-weight: 700; color: var(--rose); }
+  .node:nth-child(1) .node__q { color: var(--violet); }
+  .node:nth-child(3) .node__q { color: var(--gold); }
+  .node:nth-child(4) .node__q { color: var(--mint); }
+  .node:nth-child(5) .node__q { color: var(--sky); }
+  .node__title { font-family: var(--font-display); font-size: clamp(19px, 1.8vw, 25px); font-weight: 600; margin-top: 2px; }
+  .node__desc { font-size: 12.8px; color: var(--ink-dim); line-height: 1.55; margin-top: 10px; }
+  .node__exit { margin-top: 12px; font-size: 12px; color: var(--ink-dim); }
+  .node__exit b { display: block; color: var(--ink); font-weight: 600; margin-bottom: 2px; }
+
+  /* dating future */
+  .future {
+    margin-top: clamp(54px, 7vw, 96px); border-radius: 22px; overflow: hidden;
+    border: 1px solid var(--line); background:
+      radial-gradient(120% 120% at 100% 0%, rgba(56, 189, 248, .16), transparent 55%),
+      radial-gradient(120% 120% at 0% 100%, rgba(255, 126, 166, .16), transparent 55%),
+      #fff;
+  }
+  .future__in { padding: clamp(28px, 4vw, 54px); }
+  .future__tag { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(--sky); }
+  .future h2 { font-family: var(--font-display); font-size: clamp(28px, 3.6vw, 46px); font-weight: 600; margin-top: 12px; line-height: 1.08; }
+  .future h2 em { font-style: italic; color: var(--sky); }
+  .future p { color: var(--ink-dim); margin-top: 14px; font-size: 15.5px; line-height: 1.65; max-width: 780px; }
+  .future__flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2vw, 24px); margin-top: 30px; }
+  .fcard { border: 1px dashed rgba(56, 189, 248, .5); border-radius: 14px; padding: 20px; background: rgba(56, 189, 248, .05); }
+  .fcard b { font-family: var(--font-display); font-size: 20px; font-weight: 600; display: block; }
+  .fcard span { font-size: 13px; color: var(--ink-dim); display: block; margin-top: 7px; line-height: 1.55; }
+
+  /* legend / footer */
+  .legend { margin-top: clamp(44px, 5vw, 70px); display: flex; flex-wrap: wrap; gap: 22px; justify-content: center;
+    padding-top: 26px; border-top: 1px solid var(--line); }
+  .legend span { font-size: 12.5px; color: var(--ink-dim); display: inline-flex; align-items: center; gap: 8px; }
+  .legend i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+  .foot { text-align: center; margin-top: 30px; font-family: var(--font-display); font-style: italic; color: var(--ink-dim); font-size: 16px; }
+
+  @media (max-width: 900px) {
+    .weeks, .rail__grid, .future__flow { grid-template-columns: 1fr; }
+    .rail::before { display: none; }
+    .node { padding-top: 0; padding-left: 30px; }
+    .node::before { top: 4px; }
+    .phase__sub { margin-left: 0; width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head">
+    <span class="head__tag">План развития · Moora</span>
+    <h1>От ядра — к <em>близости</em></h1>
+    <p>Дорожная карта продукта и рынка. Сейчас — приложение для пар. Дальше — возможно, и дейтинг.</p>
+    <div class="rainbow"></div>
+  </header>
+
+  <!-- ПЕРВЫЕ 3 НЕДЕЛИ -->
+  <section class="phase">
+    <div class="phase__head">
+      <span class="phase__num">01</span>
+      <h2 class="phase__title">Первые 3 недели</h2>
+      <span class="phase__sub">28.09 – 18.10.2026 · ядро, каналы, первые пары</span>
+    </div>
+    <div class="weeks">
+      <div class="wk">
+        <span class="wk__label">Неделя 1</span>
+        <h3 class="wk__title">Ядро и витрина</h3>
+        <div class="wk__date">28.09 – 04.10</div>
+        <ul class="wk__list">
+          <li><b>Мокапы</b> — 5 экранов в едином стиле</li>
+          <li><b>Онбординг пары</b> — данные обоих, согласие</li>
+          <li><b>Тест языка любви</b> + результат</li>
+          <li><b>Манифест</b> закреплён в TG / IG / VK</li>
+          <li><b>Каналы</b> оформлены, лендинг с waitlist</li>
+        </ul>
+        <div class="wk__metrics">
+          <span>Онбординг до конца — <b>60%</b></span>
+          <span>Тест пройден — <b>50%</b></span>
+          <span>Подписчики — <b>+60</b> · Заявки — <b>15</b></span>
+        </div>
+      </div>
+      <div class="wk">
+        <span class="wk__label">Неделя 2</span>
+        <h3 class="wk__title">Чат и бета</h3>
+        <div class="wk__date">05.10 – 11.10</div>
+        <ul class="wk__list">
+          <li><b>Двусторонний чат</b> — черновик → перевод → одобрение</li>
+          <li><b>Вишлист-подарки</b> + напоминания о датах</li>
+          <li><b>Закрытая бета</b> — 10 пар</li>
+          <li><b>Запуск</b> Threads и Twitter EN</li>
+          <li><b>Контент</b> под TG / IG / Threads, VK — дубль</li>
+        </ul>
+        <div class="wk__metrics">
+          <span>Первый диалог — <b>8 пар</b></span>
+          <span>Активация — <b>70%</b></span>
+          <span>Подписчики — <b>+120</b> · Охваты — <b>300+</b></span>
+        </div>
+      </div>
+      <div class="wk">
+        <span class="wk__label">Неделя 3</span>
+        <h3 class="wk__title">История и рост</h3>
+        <div class="wk__date">12.10 – 18.10</div>
+        <ul class="wk__list">
+          <li><b>История</b> переписки + подсказки по тону</li>
+          <li><b>Фидбек-сессия</b> → 10 правок продукта</li>
+          <li><b>UGC</b> «Скажи это бережно»</li>
+          <li><b>Реферальная механика</b> «пригласи партнёра»</li>
+          <li><b>Коллаборации</b> с профильными аккаунтами</li>
+        </ul>
+        <div class="wk__metrics">
+          <span>Вишлист создан — <b>5 пар</b></span>
+          <span>Подписчики — <b>250</b></span>
+          <span>Заявки — <b>30</b> · Охваты — <b>700+</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ГОД -->
+  <section class="rail">
+    <div class="phase__head">
+      <span class="phase__num">02</span>
+      <h2 class="phase__title">Путь на год</h2>
+      <span class="phase__sub">Q1 → Q4 · вехи с критериями выхода</span>
+    </div>
+    <div class="rail__grid">
+      <div class="node">
+        <div class="node__q">Q1</div>
+        <div class="node__title">MVP</div>
+        <p class="node__desc">Онбординг, тест языка любви, двусторонний чат, вишлист.</p>
+        <p class="node__exit"><b>Выход</b>50 пар · активация 40%</p>
+      </div>
+      <div class="node">
+        <div class="node__q">Q2</div>
+        <div class="node__title">Beta · PMF</div>
+        <p class="node__desc">История, tone-советы, отзывы. Ищем продуктовое соответствие.</p>
+        <p class="node__exit"><b>Выход</b>retention D30 ≥ 25%</p>
+      </div>
+      <div class="node">
+        <div class="node__q">Q3</div>
+        <div class="node__title">Launch</div>
+        <p class="node__desc">Публичный запуск, мобильные приложения, первые тарифы.</p>
+        <p class="node__exit"><b>Выход</b>первые платящие · 500 пар</p>
+      </div>
+      <div class="node">
+        <div class="node__q">Q4</div>
+        <div class="node__title">Scale</div>
+        <p class="node__desc">Рост, B2B, новые языки и рынки.</p>
+        <p class="node__exit"><b>Выход</b>LTV/CAC &gt; 3 · 3 000 пар</p>
+      </div>
+      <div class="node">
+        <div class="node__q">Q+</div>
+        <div class="node__title">Экосистема</div>
+        <p class="node__desc">Moora перестаёт быть только «для тех, кто уже вместе».</p>
+        <p class="node__exit"><b>Гипотеза</b>расширение в дейтинг</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- БУДУЩЕЕ: ДЕЙТИНГ -->
+  <section class="future">
+    <div class="future__in">
+      <span class="future__tag">Возможное будущее</span>
+      <h2>А если добавить <em>дейтинг</em>?</h2>
+      <p>Мы учим пары говорить бережно. Ту же логику — язык любви, мягкие слова, честность без масок — можно применить задолго до отношений: на этапе знакомства. Не «свайп и забудь», а «пойми, на каком языке человек любит, прежде чем писать».</p>
+      <div class="future__flow">
+        <div class="fcard">
+          <b>1. Знакомство</b>
+          <span>Профиль на языке любви. Не «что ты ищешь», а «как ты любишь».</span>
+        </div>
+        <div class="fcard">
+          <b>2. Бережный контакт</b>
+          <span>Moora помогает написать первое сообщение так, чтобы услышали.</span>
+        </div>
+        <div class="fcard">
+          <b>3. Переход в пару</b>
+          <span>Познакомились — приложение продолжает вести вас уже как партнёров.</span>
+        </div>
+      </div>
+      <p style="margin-top:26px"><b style="color:var(--sky)">Почему это логично:</b> тот же тест языка любви, та же механика перевода, та же аудитория — просто раньше по времени. Moora сопровождает от первого знакомства до «жили долго».</p>
+    </div>
+  </section>
+
+  <div class="legend">
+    <span><i style="background:var(--violet)"></i>MVP и ядро</span>
+    <span><i style="background:var(--rose)"></i>Чат и бета</span>
+    <span><i style="background:var(--gold)"></i>История и рост</span>
+    <span><i style="background:var(--mint)"></i>Масштаб</span>
+    <span><i style="background:var(--sky)"></i>Дейтинг — гипотеза</span>
+  </div>
+  <p class="foot">Любовь — это не громкие слова. Любовь — это про настоящую близость.</p>
+
+</div>
+</body>
+</html>
